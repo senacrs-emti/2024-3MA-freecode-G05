@@ -1,0 +1,22 @@
+body {
+    font-family: "Inria Sans", serif;
+    font-style: normal;
+    color: white;
+    background-color: #000000 !important;
+}
+
+section {
+    display: flex; /* Adiciona display flex ao section */
+}
+
+.oi {
+    background-color: aqua;
+    width: 1017px;
+    height: 439px;
+}
+
+.oi1 {
+    background-color: red;
+    width: 610px;
+    height: 439px;
+}

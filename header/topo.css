@@ -13,6 +13,7 @@ body {
     align-items: center;
     justify-content: space-between;
     background-color: rgba(24, 23, 23, 1);
+    ;
     padding: 10px 30px; /* Reduzido para aproximar os elementos */
     color: #ffffff;
 }
