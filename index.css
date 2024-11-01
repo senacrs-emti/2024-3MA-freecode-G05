@@ -7,17 +7,24 @@ body {
 
 section {
     display: flex;
-    gap: 2%; /* Espaçamento entre as tabelas */
+    justify-content: space-around;
 }
 
 .partidas {
     border-radius: 8px;
-    width: 45%; /* Ajusta a largura para que as duas tabelas caibam lado a lado */
     height: 439px;
     margin: 2% 1%;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.left {
+    width: 60%; /* 70% para a tabela da esquerda */
+}
+
+.right {
+    width: 40%; /* 30% para a tabela da direita */
 }
 
 .barra {
@@ -33,14 +40,26 @@ section {
     margin-bottom: 10px;
 }
 
+.tabela {
+    background-color: #FFFAFA;
+    color: #000000;
+    width: 97%;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-around; */
+    padding: 10px;
+    /* border-radius: 8px; */
+    /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); */
+    /* margin-bottom: 10px; */
+}
+
 .times {
     width: 50px;
-    height: auto;
+    height: 50px;
 }
 
 .barra p {
     font-size: 24px;
-    font-weight: bold;
     margin: 0 10px;
     text-transform: uppercase;
 }
