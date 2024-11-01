@@ -6,14 +6,15 @@ body {
 }
 
 section {
-    display: flex; /* Adiciona display flex ao section */
+    display: flex;
+    gap: 2%; /* Espaçamento entre as tabelas */
 }
 
 .partidas {
     border-radius: 8px;
-    width: 1017px;
+    width: 45%; /* Ajusta a largura para que as duas tabelas caibam lado a lado */
     height: 439px;
-    margin: 2% 1% 2% 2%;
+    margin: 2% 1%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,46 +33,6 @@ section {
     margin-bottom: 10px;
 }
 
-.scroll-container {
-    width: 100%;
-    height: auto; /* Altura do container para rolagem */
-    overflow-y: scroll; /* Habilita a rolagem vertical */
-    direction: rtl; /* Inverte a direção para colocar a barra na esquerda */
-}
-
-/* Reseta a direção do conteúdo */
-.scroll-container > * {
-    direction: ltr;
-}
-
-/* Estilo para a barra de rolagem em navegadores baseados no WebKit (Chrome, Safari) */
-.scroll-container::-webkit-scrollbar {
-    width: 15px; /* Largura da barra de rolagem */
-    background-color: #e0e0e0; /* Cor de fundo do trilho */
-    border-radius: 8px; /* Bordas arredondadas para o trilho */
-}
-
-.scroll-container::-webkit-scrollbar-thumb {
-    background-color: #8c949a; /* Cor do polegar da barra de rolagem */
-    border-radius: 10px; /* Bordas arredondadas para o polegar */
-    border: 2px solid #e0e0e0; /* Espaço ao redor do polegar */
-}
-
-.scroll-container::-webkit-scrollbar-thumb:hover {
-    background-color: #2980b9; /* Cor ao passar o mouse */
-}
-
-/* Estilo do trilho da barra de rolagem */
-.scroll-container::-webkit-scrollbar-track {
-    background-color: #f1f1f1; /* Cor de fundo do track (trilho) */
-    border-radius: 8px; /* Bordas arredondadas para o trilho */
-}
-
-/* Remove as setas no Chrome */
-.scroll-container::-webkit-scrollbar-button {
-    display: none;
-}
-
 .times {
     width: 50px;
     height: auto;
@@ -84,21 +45,48 @@ section {
     text-transform: uppercase;
 }
 
-.tabela {
-    /* background-color: #D9D9D9; */
-    border: solid 1px white;
+/* Configurações da rolagem para a tabela da esquerda */
+.scroll-container.left-scroll {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    direction: rtl; /* Coloca a barra de rolagem na esquerda */
+}
+
+/* Restaura a direção do conteúdo */
+.scroll-container.left-scroll > * {
+    direction: ltr;
+}
+
+/* Configurações da rolagem para a tabela da direita */
+.scroll-container.right-scroll {
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll; /* Barra de rolagem na direita (padrão) */
+}
+
+/* Estilo para as barras de rolagem em navegadores WebKit (Chrome, Safari) */
+.scroll-container::-webkit-scrollbar {
+    width: 15px;
+    background-color: #e0e0e0;
     border-radius: 8px;
-    color: white;
-    font-size: 30px;
-    width: 610px;
-    height: 439px;
-    margin-left: 1%;
-    margin-top: 2%;
-    margin-right: 2%;
-    margin-bottom: 2%;
-    text-align: center;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    padding-top: 10px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background-color: #8c949a;
+    border-radius: 10px;
+    border: 2px solid #e0e0e0;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+    background-color: #2980b9;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 8px;
+}
+
+.scroll-container::-webkit-scrollbar-button {
+    display: none;
 }
