@@ -8,7 +8,7 @@
 
 .container {
     position: relative;
-    width: 1280px;  /* Largura desejada */
+    width: 1263px;  /* Largura desejada */
     height: 200px;  /* Altura desejada */
     overflow: hidden;
 }
@@ -38,7 +38,7 @@
 .placar {
     display: flex;
     align-items: center;
-    gap: 100px;
+    gap: 80px;
     font-size: 60px;
 }
 
@@ -55,4 +55,68 @@
 
 .resultado, .x {
     font-size: 60px;
+}
+
+.timeline {
+    width: 450px;
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 8px;
+    font-family: "Inria Sans", serif;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    position: relative;
+}
+
+.recFimDeJogo, .recIntervalo {
+    background-color: white;
+    text-align: center;
+    margin: 20px 0; /* Aumenta o espaçamento vertical */
+    padding: 5px 0;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.event {
+    display: flex;
+    align-items: center;
+    margin: 30px 0; /* Aumenta o espaçamento vertical */
+    gap: 5px;
+}
+
+.event-time1 {
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.event-time2 {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.minute {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.player, .sub-out {
+    font-size: 20px;
+}
+
+.icon {
+    width: 30px; /* Ajuste o tamanho conforme necessário */
+    height: 30px;
+}
+
+.comentario{
+    width: 450px;
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 8px;
+    font-family: "Inria Sans", serif;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-bottom: 5%;
 }
