@@ -20,7 +20,7 @@
         
         <!-- menu -->
         <nav class="menu">
-            <a href="#">Jogos</a>
+            <a href="../index.php">Jogos</a>
             <a href="#">Feed</a>
         </nav>
         

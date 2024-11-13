@@ -1,4 +1,5 @@
 <?php
+include './configuracao.php'; // configuracao
 include './header/header.php'; // Inclui o header
 
 // Conteúdo da página principal
