@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 13/11/2024 às 12:45
+-- Tempo de geração: 13/11/2024 às 15:24
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.0.30
 
@@ -31,7 +31,7 @@ CREATE TABLE `avaliacao` (
   `idavaliacao` int(11) NOT NULL,
   `nota` int(11) DEFAULT NULL,
   `comentario` longtext DEFAULT NULL,
-  `idpartidastimes` int(11) DEFAULT NULL
+  `idpartidas` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
@@ -60,26 +60,36 @@ CREATE TABLE `login` (
 
 CREATE TABLE `partidas` (
   `idpartidas` int(11) NOT NULL,
-  `data` date DEFAULT NULL,
-  `hora` datetime DEFAULT NULL,
+  `data` varchar(15) DEFAULT NULL,
+  `hora` varchar(10) DEFAULT NULL,
   `estadio` varchar(100) DEFAULT NULL,
-  `time_idtime` int(11) NOT NULL,
-  `avaliacao_idavaliacao` int(11) NOT NULL
+  `idtimeCasa` varchar(50) NOT NULL DEFAULT '',
+  `idtimeVis` varchar(50) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Despejando dados para a tabela `partidas`
+--
+
+INSERT INTO `partidas` (`idpartidas`, `data`, `hora`, `estadio`, `idtimeCasa`, `idtimeVis`) VALUES
+(1, '04/12/2024', NULL, 'Beira Rio', '2', '6'),
+(2, '04/12/2024', NULL, 'Mineirão', '10', '16'),
+(3, '04/12/2024', NULL, 'Barradão', '20', '1'),
+(4, '04/12/2024', NULL, 'Maracanã', '13', '11'),
+(5, '04/12/2024', NULL, 'São Januário', '19', '5'),
+(6, '04/12/2024', NULL, 'Neo Química Arena', '8', '12'),
+(7, '04/12/2024', NULL, 'Morumbis', '18', '15'),
+(8, '04/12/2024', NULL, 'Arena da Baixada', '7', '17'),
+(9, '04/12/2024', NULL, 'Antônio Accioly', '4', '14'),
+(10, '04/12/2024', NULL, 'Heriberto Hülse', '9', '3');
 
 -- --------------------------------------------------------
 
 --
 -- Estrutura para tabela `patidastimes`
 --
-
-CREATE TABLE `patidastimes` (
-  `idpatidasTimes` int(11) NOT NULL,
-  `idpartida` int(11) DEFAULT NULL,
-  `idtimeCasa` int(11) DEFAULT NULL,
-  `idtimeVis` int(11) DEFAULT NULL,
-  `partidas_idpartidas` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+-- Erro ao ler a estrutura para a tabela ratematch.patidastimes: #1146 - Tabela 'ratematch.patidastimes' não existe
+-- Erro ao ler dados para tabela ratematch.patidastimes: #1064 - Você tem um erro de sintaxe no seu SQL próximo a 'FROM `ratematch`.`patidastimes`' na linha 1
 
 -- --------------------------------------------------------
 
@@ -143,16 +153,7 @@ ALTER TABLE `login`
 -- Índices de tabela `partidas`
 --
 ALTER TABLE `partidas`
-  ADD PRIMARY KEY (`idpartidas`),
-  ADD KEY `fk_partidas_time1_idx` (`time_idtime`),
-  ADD KEY `fk_partidas_avaliacao1_idx` (`avaliacao_idavaliacao`);
-
---
--- Índices de tabela `patidastimes`
---
-ALTER TABLE `patidastimes`
-  ADD PRIMARY KEY (`idpatidasTimes`),
-  ADD KEY `fk_patidasTimes_partidas_idx` (`partidas_idpartidas`);
+  ADD PRIMARY KEY (`idpartidas`);
 
 --
 -- Índices de tabela `times`
@@ -180,13 +181,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT de tabela `partidas`
 --
 ALTER TABLE `partidas`
-  MODIFY `idpartidas` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de tabela `patidastimes`
---
-ALTER TABLE `patidastimes`
-  MODIFY `idpatidasTimes` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idpartidas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `times`
@@ -203,19 +198,6 @@ ALTER TABLE `times`
 --
 ALTER TABLE `login`
   ADD CONSTRAINT `fk_login_avaliacao1` FOREIGN KEY (`avaliacao_idavaliacao`) REFERENCES `avaliacao` (`idavaliacao`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Restrições para tabelas `partidas`
---
-ALTER TABLE `partidas`
-  ADD CONSTRAINT `fk_partidas_avaliacao1` FOREIGN KEY (`avaliacao_idavaliacao`) REFERENCES `avaliacao` (`idavaliacao`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_partidas_time1` FOREIGN KEY (`time_idtime`) REFERENCES `times` (`idtime`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Restrições para tabelas `patidastimes`
---
-ALTER TABLE `patidastimes`
-  ADD CONSTRAINT `fk_patidasTimes_partidas` FOREIGN KEY (`partidas_idpartidas`) REFERENCES `partidas` (`idpartidas`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
