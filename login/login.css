@@ -29,6 +29,12 @@
     height: 100%;
 }*/
 
+.title {
+    font-size: 35px;
+    font-weight: normal;
+    text-transform: capitalize;
+}
+
 .villa {
     z-index: 10;
 }
@@ -44,11 +50,29 @@
 
 .login {
     flex: 2 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .fLogin {
     display: flex;
     flex-direction: column;
+    width: 55%;
+}
+
+.fLogin label {
+    font-size: 19px;
+}
+
+.fLogin input {
+    height: 35px;
+    width: 220px;
+    border: none;
+    border-radius: 12px;
+    background-color: #D7D7DC;
+    margin-top: 8px;
+    margin-bottom: 10px;
 }
 
 .contentCadastro {
