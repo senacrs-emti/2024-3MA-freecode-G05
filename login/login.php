@@ -21,7 +21,7 @@ include_once '../header/header.php';
                     <input type="password" placeholder = "Digite sua Senha">
                     <button class = "btn btn-entrar">Entrar</button>
                 </form>
-                <p>Ainda não tem conta?<a href="#"><u>Cadastre-se</u></a></p>
+                <p>Ainda não tem conta?<a id="btnCadastro" href="#"><u>Cadastre-se</u></a></p>
             </div>
         </div>
 
@@ -42,7 +42,7 @@ include_once '../header/header.php';
                     <input type="password" placeholder = "Digite sua Senha">
                     <button class = "btn">Cadastrar</button>
                 </form>
-                <p>Já tem conta?<a href="#"><u>Entre</u></a></p>
+                <p>Já tem conta?<a id="btnLogin" href="#"><u>Entre</u></a></p>
             </div>
         </div>
         </div>

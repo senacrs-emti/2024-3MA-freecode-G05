@@ -46,6 +46,7 @@
 
 .contentLogin {
     display: flex;
+    /*display: none;*/
 }
 
 .login {
@@ -75,11 +76,6 @@
     margin-bottom: 10px;
 }
 
-.contentCadastro {
-    position: absolute;
-    display: none;
-}
-
 .btn {
     border-radius: 15px;
     color: #FFF;
@@ -88,6 +84,15 @@
     cursor: pointer;
     border: 1px solid #000;
     width: 100px;
+    text-align: center;
+}
+
+.btn.btn-entrar{
+    margin: 0 auto;
+    margin-top: 9rem;
+    margin-bottom: 1rem;
+    display: block;
+    text-align: center;
 }
 
 .btn:hover{
@@ -99,4 +104,17 @@
 .fCadastro {
     display: flex;
     flex-direction: column;
+}
+
+.contentCadastro {
+    position: absolute;
+    display: none;
+}
+
+.contentCadastro .alanpa {
+    order: 2;
+}
+
+.contentCadastro .cadastro {
+    order: 1;
 }
