@@ -12,14 +12,22 @@
 }
 
 .content {
-    color: #000;
-    background-color: #FFF;
+    /*color: #000;
     width: 80%;
-    height: 70%;
     display: flex;
     justify-content: space-around;
     align-items: center;
     position: relative;
+    border-radius: 8px; */
+    color: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; /* Garante que a imagem e o formulário tenham a mesma altura */
+    width: 80%;
+    max-width: 950px; /* Limita a largura máxima */
+    background-color: #FFF;
+    border-radius: 8px;
+    overflow: hidden; /* Remove qualquer excesso de conteúdo */
 }
 /*
 .content::before{
@@ -33,10 +41,29 @@
     font-size: 35px;
     font-weight: normal;
     text-transform: capitalize;
+    text-align: center;
+}
+
+.title::after {
+    content: "";
+    display: block;
+    width: 130px;
+    height: 11px;
+    background-color: #000;
+    margin: 10px auto 0; /* Centraliza e adiciona espaçamento */
+    border-radius: 5px; /* Opcional */
 }
 
 .villa {
-    z-index: 10;
+    /*z-index: 10;*/
+    flex: 1;
+}
+
+.villa img {
+    width: 100%;
+    height: 100%; /* Ajusta o tamanho da imagem para caber no container */
+    object-fit: cover; /* Mantém as proporções da imagem */
+    border-radius: 8px 0 0 8px; /* Adiciona bordas arredondadas na imagem à esquerda */
 }
 
 .container img {
@@ -46,34 +73,50 @@
 
 .contentLogin {
     display: flex;
-    /*display: none;*/
+    display: none;
 }
 
 .login {
-    flex: 2 0 auto;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* Centraliza o conteúdo horizontalmente */
+    padding: 4.325rem;
+    width: 100%;
+    background-color: #FFF;
+    border-radius: 0 8px 8px 0;
 }
 
 .fLogin {
     display: flex;
     flex-direction: column;
-    width: 55%;
+    width: 100%; /* Ajusta para ocupar o tamanho do pai */
+    max-width: 400px; /* Define um limite máximo */
+    margin: 0 auto; /* Centraliza horizontalmente */
 }
 
 .fLogin label {
     font-size: 19px;
 }
 
+label[for="fUsuario"] {
+    margin-top: 3.125rem;
+}
+
+label[for="fSenha"] {
+    margin-top: 1.25rem;
+}
+
 .fLogin input {
-    height: 35px;
-    width: 220px;
+    height: 40px; /* Mantém a altura */
+    width: 100%; /* Ajusta para ocupar toda a largura do pai */
     border: none;
     border-radius: 12px;
     background-color: #D7D7DC;
     margin-top: 8px;
     margin-bottom: 10px;
+    padding: 0 10px; /* Adiciona espaçamento interno */
+    box-sizing: border-box; /* Inclui padding no cálculo da largura */
 }
 
 .btn {
@@ -89,10 +132,11 @@
 
 .btn.btn-entrar{
     margin: 0 auto;
-    margin-top: 9rem;
+    margin-top: 5.5rem;
     margin-bottom: 1rem;
     display: block;
     text-align: center;
+
 }
 
 .btn:hover{
@@ -108,7 +152,8 @@
 
 .contentCadastro {
     position: absolute;
-    display: none;
+    display: flex;
+    /*display: none;*/
 }
 
 .contentCadastro .alanpa {
