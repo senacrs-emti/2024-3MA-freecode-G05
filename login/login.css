@@ -29,13 +29,15 @@
     border-radius: 8px;
     overflow: hidden; /* Remove qualquer excesso de conteúdo */
 }
-/*
+
 .content::before{
     content: "";
     position: absolute;
     width: 40%;
     height: 100%;
-}*/
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
 
 .title {
     font-size: 35px;
