@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 13/11/2024 às 15:24
+-- Tempo de geração: 22/11/2024 às 12:01
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.0.30
 
@@ -81,15 +81,17 @@ INSERT INTO `partidas` (`idpartidas`, `data`, `hora`, `estadio`, `idtimeCasa`, `
 (7, '04/12/2024', NULL, 'Morumbis', '18', '15'),
 (8, '04/12/2024', NULL, 'Arena da Baixada', '7', '17'),
 (9, '04/12/2024', NULL, 'Antônio Accioly', '4', '14'),
-(10, '04/12/2024', NULL, 'Heriberto Hülse', '9', '3');
-
--- --------------------------------------------------------
-
---
--- Estrutura para tabela `patidastimes`
---
--- Erro ao ler a estrutura para a tabela ratematch.patidastimes: #1146 - Tabela 'ratematch.patidastimes' não existe
--- Erro ao ler dados para tabela ratematch.patidastimes: #1064 - Você tem um erro de sintaxe no seu SQL próximo a 'FROM `ratematch`.`patidastimes`' na linha 1
+(10, '04/12/2024', NULL, 'Heriberto Hülse', '9', '3'),
+(11, '08/12/2024', NULL, 'Arena do Grêmio', '1', '8'),
+(12, '08/12/2024', NULL, 'Arena MRV', '5', '7'),
+(13, '08/12/2024', NULL, 'Arena Fonte Nova', '12', '4'),
+(14, '08/12/2024', NULL, 'Maracanã', '3', '20'),
+(15, '08/12/2024', NULL, 'Nilton Santos', '6', '18'),
+(16, '08/12/2024', NULL, 'Allianz Parque', '16', '13'),
+(17, '08/12/2024', NULL, 'Arena Red Bull', '17', '9'),
+(18, '08/12/2024', NULL, 'Arena Castelão', '14', '2'),
+(19, '08/12/2024', NULL, 'Arena Pantanal', '11', '19'),
+(20, '08/12/2024', NULL, 'Estádio Alfredo Jaconi', '15', '10');
 
 -- --------------------------------------------------------
 
@@ -127,7 +129,7 @@ INSERT INTO `times` (`idtime`, `nome`, `escudo`, `sigla`, `estadio`, `mascote`) 
 (14, 'Fortaleza', 'fortaleza.jpg', 'FOR', 'fortaleza.jpg', 'fortaleza.jpg'),
 (15, 'Juventude', 'juventude.jpg', 'JUV', 'juventude.jpg', 'juventude.jpg'),
 (16, 'Palmeiras', 'palmeiras.jpg', 'PAL', 'palmeiras.jpg', 'palmeiras.jpg'),
-(17, 'Bragantino', 'bragantino.jpg', 'BRA', 'bragantino.jpg', 'bragantino.jpg'),
+(17, 'Bragantino', 'bragantino.jpg', 'RBG', 'bragantino.jpg', 'bragantino.jpg'),
 (18, 'São Paulo', 'saopaulo.jpg', 'SAO', 'saopaulo.jpg', 'saopaulo.jpg'),
 (19, 'Vasco', 'vasco.jpg', 'VAS', 'vasco.jpg', 'vasco.jpg'),
 (20, 'Vitória', 'vitoria.jpg', 'VIT', 'vitoria.jpg', 'vitoria.jpg');
@@ -181,7 +183,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT de tabela `partidas`
 --
 ALTER TABLE `partidas`
-  MODIFY `idpartidas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idpartidas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de tabela `times`
