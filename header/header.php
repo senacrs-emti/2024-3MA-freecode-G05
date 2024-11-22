@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="<?php echo $varPathLocal;?>enem.css">
     <link rel="stylesheet" href="<?php echo $varPathLocal;?>tab_classificacao.css">
     <link rel="stylesheet" href="<?php echo $varPathLocal;?>footer/baixo.css">
-    <link rel="stylesheet" href="<?php echo $varPathLocal;?>login/login2.css">
+    <link rel="stylesheet" href="<?php echo $varPathLocal;?>login/login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">

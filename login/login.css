@@ -8,7 +8,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: auto;
+    margin-top: 55px;
 }
 
 .content {
@@ -24,26 +25,26 @@
     justify-content: space-between;
     align-items: stretch; /* Garante que a imagem e o formulário tenham a mesma altura */
     width: 80%;
-    max-width: 950px; /* Limita a largura máxima */
+    max-width: 736px; /* Limita a largura máxima */
     background-color: #FFF;
     border-radius: 8px;
     overflow: hidden; /* Remove qualquer excesso de conteúdo */
 }
 
-.content::before{
+/*.content::before{
     content: "";
     position: absolute;
     width: 40%;
     height: 100%;
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
-}
+}*/
 
 .title {
     font-size: 35px;
     font-weight: normal;
-    text-transform: capitalize;
     text-align: center;
+    margin-top: 1rem;
 }
 
 .title::after {
@@ -61,21 +62,20 @@
     flex: 1;
 }
 
-.villa img {
+.villa img , .alanpa img {
     width: 100%;
     height: 100%; /* Ajusta o tamanho da imagem para caber no container */
-    object-fit: cover; /* Mantém as proporções da imagem */
+    /*object-fit: cover; /* Mantém as proporções da imagem */
     border-radius: 8px 0 0 8px; /* Adiciona bordas arredondadas na imagem à esquerda */
 }
 
 .container img {
     width: 30vw;
-    height: 70vh;
 }
 
 .contentLogin {
     display: flex;
-    display: none;
+    /*display: none;*/
 }
 
 .login {
@@ -83,13 +83,23 @@
     display: flex;
     flex-direction: column;
     align-items: center; /* Centraliza o conteúdo horizontalmente */
-    padding: 4.325rem;
+    margin-left: 4.325rem;
+    width: 100%;
+    background-color: #FFF;
+    border-radius: 0 8px 8px 0;
+}
+.cadastro {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo horizontalmente */
+    margin-left: 0;
     width: 100%;
     background-color: #FFF;
     border-radius: 0 8px 8px 0;
 }
 
-.fLogin {
+.fLogin{
     display: flex;
     flex-direction: column;
     width: 100%; /* Ajusta para ocupar o tamanho do pai */
@@ -97,7 +107,15 @@
     margin: 0 auto; /* Centraliza horizontalmente */
 }
 
-.fLogin label {
+.fCadastro {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Ajusta para ocupar o tamanho do pai */
+    max-width: 270px; /* Define um limite máximo */
+    margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+.fLogin label, .fCadastro label {
     font-size: 19px;
 }
 
@@ -109,7 +127,7 @@ label[for="flSenha"] {
     margin-top: 1.25rem;
 }
 
-.fLogin input {
+.fLogin input,.fCadastro input {
     height: 40px; /* Mantém a altura */
     width: 100%; /* Ajusta para ocupar toda a largura do pai */
     border: none;
@@ -147,20 +165,6 @@ label[for="flSenha"] {
     font-weight: bold;
 }
 
-.fCadastro {
-    display: flex;
-    flex-direction: column;
-    display: flex;
-    flex-direction: column;
-    width: 100%; /* Ajusta para ocupar o tamanho do pai */
-    max-width: 400px; /* Define um limite máximo */
-    margin: 0 auto; /* Centraliza horizontalmente */
-}
-
-.fCadastro label {
-    font-size: 19px;
-}
-
 label[for="fcEmail"] {
     margin-top: 3.125rem;
 }
@@ -188,20 +192,15 @@ label[for="fcSenha"] {
 .contentCadastro {
     position: absolute;
     display: flex;
-    /*display: none;*/
     color: #000;
     display: flex;
     justify-content: space-between;
     align-items: stretch; /* Garante que a imagem e o formulário tenham a mesma altura */
     width: 80%;
-    max-width: 950px; /* Limita a largura máxima */
+    max-width: 736px;  /* Limita a largura máxima */ 
     background-color: #FFF;
     border-radius: 8px;
     overflow: hidden; /* Remove qualquer excesso de conteúdo */
-}
-
-.cadastro {
-    margin-left: 90px;
 }
 
 .contentCadastro .alanpa {
