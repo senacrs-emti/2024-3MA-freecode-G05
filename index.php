@@ -1,4 +1,5 @@
 <?php
+include_once 'conexao.php';
 include './header/header.php'; // Inclui o header
 
 // Conteúdo da página principal
@@ -9,7 +10,21 @@ include './header/header.php'; // Inclui o header
         <!-- Conteúdo da tabela da esquerda (jogos) -->
         <div class="titulo-classificacao">PRÓXIMAS PARTIDAS</div>
         <div class="barra">
-            <img class="times" src="./img/gremio.png" alt=""><p>GRE</p>
+            <img class="times" src="./img/gremio.png" alt=""><p>
+                <?php
+                //TEM Q FAZER INNER JOIN
+                // comando sql para capturar os dados
+                $sql = "SELECT sigla FROM times WHERE idtime=1";
+                // executa o comando
+                $result = mysqli_query( $conn, $sql );
+                // transforma o resultado em dados 
+                $data = mysqli_fetch_assoc($result);
+
+                echo '<pre>';
+                var_dump($data);
+                echo '</pre>';
+                ?>
+            </p>
             <p>X</p>
             <p>INT</p><img class="times" src="./img/inter.png" alt="">
         </div>

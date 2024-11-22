@@ -22,7 +22,7 @@
         <!-- menu -->
         <nav class="menu">
             <a href="#">Jogos</a>
-            <a href="#">Rank</a>
+            <a href="#">Ranking</a>
             <a href="#">Feed</a>
         </nav>
         
