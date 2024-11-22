@@ -15,9 +15,9 @@ include_once '../header/header.php';
                 <div class="login">
                     <h2 class="title">Login</h2>
                     <form class="fLogin">
-                        <label for="fUsuario">Usuário:</label>
+                        <label for="flUsuario">Usuário:</label>
                         <input type="text" placeholder = "Digite seu Usuário">
-                        <label for="fSenha">Senha:</label>
+                        <label for="flSenha">Senha:</label>
                         <input type="password" placeholder = "Digite sua Senha">
                         <button class = "btn btn-entrar">Entrar</button>
                     </form>
@@ -34,13 +34,13 @@ include_once '../header/header.php';
                 <div class="cadastro">
                     <h2 class="title">Cadastre-se</h2>
                     <form class="fCadastro">
-                        <label for="fEmail">Email:</label>
+                        <label for="fcEmail">Email:</label>
                         <input type="email" placeholder = "Digite seu Email">
-                        <label for="fUsuario">Usuário:</label>
+                        <label for="fcUsuario">Usuário:</label>
                         <input type="text" placeholder = "Digite seu Usuário">
-                        <label for="fSenha">Senha:</label>
+                        <label for="fcSenha">Senha:</label>
                         <input type="password" placeholder = "Digite sua Senha">
-                        <button class = "btn">Cadastrar</button>
+                        <button class = "btn btn-cadastrar">Cadastrar</button>
                     </form>
                     <p>Já tem conta?<a id="btnLogin" href="#"><u>Entre</u></a></p>
                 </div>
