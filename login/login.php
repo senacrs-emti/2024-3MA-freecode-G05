@@ -1,6 +1,7 @@
 <?php
 include_once '../configuracao.php';
 include_once '../header/header.php'; 
+include_once '../database/conexao.php';
 ?>
 
     <div class="container">

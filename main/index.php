@@ -1,6 +1,6 @@
 <?php
-include './configuracao.php'; // configuracao
-include './header/header.php'; // Inclui o header
+include '../configuracao.php'; // configuracao
+include '../header/header.php'; // Inclui o header
 
 // Conteúdo da página principal
 ?>
@@ -9,19 +9,19 @@ include './header/header.php'; // Inclui o header
     <div class="partidas_left">
         <!-- Conteúdo da tabela da esquerda (jogos) -->
         <div class="barra">
-            <img class="times" src="./img/gremio.png" alt=""><p>GRE</p>
+            <img class="times" src="../img/gremio.png" alt=""><p>GRE</p>
             <p>X</p>
-            <p>INT</p><img class="times" src="./img/inter.png" alt="">
+            <p>INT</p><img class="times" src="../img/inter.png" alt="">
         </div>
         <div class="barra">
-            <img class="times" src="./img/FLA.png" alt=""><p>FLA</p>
+            <img class="times" src="../img/FLA.png" alt=""><p>FLA</p>
             <p>X</p>
-            <p>VAS</p><img class="times" src="./img/VAS.png" alt="">
+            <p>VAS</p><img class="times" src="../img/VAS.png" alt="">
         </div>
         <div class="barra">
-            <img class="times" src="./img/CRU.png" alt=""><p>CRU</p>
+            <img class="times" src="../img/CRU.png" alt=""><p>CRU</p>
             <p>X</p>
-            <p>CAM</p><img class="times" src="./img/CAM.png" alt="">
+            <p>CAM</p><img class="times" src="../img/CAM.png" alt="">
         </div>
         <!-- Outros jogos podem ser adicionados aqui -->
     </div>
@@ -41,12 +41,12 @@ include './header/header.php'; // Inclui o header
             </div>
             <div class="time-item">
                 <p>1</p>
-                <img class="times" src="./img/BOT.png" alt="">Botafogo
+                <img class="times" src="../img/BOT.png" alt="">Botafogo
                 <p>70</p><p>22</p><p>4</p><p>4</p><p>30</p>
             </div>
             <div class="time-item">
                 <p>2</p>
-                <img class="times" src="./img/PAL.png" alt=""><p>Palmeiras</p>
+                <img class="times" src="../img/PAL.png" alt=""><p>Palmeiras</p>
                 <p>65</p><p>20</p><p>5</p><p>5</p><p>25</p>
             </div>
             <!-- Outros times da tabela podem ser adicionados aqui -->
@@ -55,5 +55,5 @@ include './header/header.php'; // Inclui o header
 </section>
 
 <?php
-include './footer/footer.php'; // Inclui o footer
+include '../footer/footer.php'; // Inclui o footer
 ?>

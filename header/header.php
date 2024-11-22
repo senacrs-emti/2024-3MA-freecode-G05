@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Partidas</title>
     <link rel="stylesheet" href="<?php echo $varPathLocal;?>header/topo.css">
-    <link rel="stylesheet" href="<?php echo $varPathLocal;?>enem.css">
-    <link rel="stylesheet" href="<?php echo $varPathLocal;?>tab_classificacao.css">
+    <link rel="stylesheet" href="<?php echo $varPathLocal;?>main/enem.css">
     <link rel="stylesheet" href="<?php echo $varPathLocal;?>footer/baixo.css">
     <link rel="stylesheet" href="<?php echo $varPathLocal;?>login/login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
