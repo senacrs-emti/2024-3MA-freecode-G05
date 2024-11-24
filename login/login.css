@@ -177,18 +177,6 @@ label[for="fcSenha"] {
     margin-top: 1.25rem;
 }
 
-.fCadastro input {
-    height: 40px; /* Mantém a altura */
-    width: 100%; /* Ajusta para ocupar toda a largura do pai */
-    border: none;
-    border-radius: 12px;
-    background-color: #D7D7DC;
-    margin-top: 8px;
-    margin-bottom: 10px;
-    padding: 0 10px; /* Adiciona espaçamento interno */
-    box-sizing: border-box; /* Inclui padding no cálculo da largura */
-}
-
 .contentCadastro {
     position: absolute;
     display: flex;
