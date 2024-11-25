@@ -138,6 +138,16 @@ label[for="flSenha"] {
     box-sizing: border-box; /* Inclui padding no cálculo da largura */
 }
 
+#togglePassword {
+    position: absolute; 
+    right: 5px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    border: none; 
+    background: transparent; 
+    cursor: pointer;
+}
+
 .btn {
     border-radius: 15px;
     color: #FFF;
