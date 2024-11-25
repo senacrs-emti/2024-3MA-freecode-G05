@@ -41,16 +41,18 @@ CREATE TABLE `avaliacao` (
 --
 
 CREATE TABLE `login` (
-  `idlogin` int(11) NOT NULL,
-  `user` varchar(45) DEFAULT NULL,
+  `idlogin` int(11) NOT NULL AUTO_INCREMENT,
+  `user` varchar(45) NOT NULL UNIQUE,
   `senha` varchar(45) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL,
+  `email` varchar(45) NOT NULL UNIQUE,
   `foto` blob DEFAULT NULL,
   `nome` varchar(45) DEFAULT NULL,
   `avaliacao_idavaliacao` int(11) NOT NULL,
   `administrador` tinyint(4) DEFAULT NULL,
-  `usuario` tinyint(4) DEFAULT NULL
+  `usuario` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`idlogin`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
 
 -- --------------------------------------------------------
 
