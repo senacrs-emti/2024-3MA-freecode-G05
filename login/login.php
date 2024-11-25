@@ -10,6 +10,7 @@ include_once '../database/conexao.php';
         print_r($_POST['nome']);*/
 
         $user = $_POST['usuario'];
+        $name = $_POST['nome'];
         $email = $_POST['email'];
         $password = $_POST['senha'];
 
@@ -17,7 +18,7 @@ include_once '../database/conexao.php';
         mysqli_query($conn, $query);
         $avaliacao_id = mysqli_insert_id($conn);
         
-        $result = mysqli_query($conn, "INSERT INTO login(user, email, senha, avaliacao_idavaliacao) VALUES ('$user', '$email', '$password', '$avaliacao_id')");        
+        $result = mysqli_query($conn, "INSERT INTO login(user, nome, email, senha, avaliacao_idavaliacao) VALUES ('$user', '$name', '$email', '$password', '$avaliacao_id')");        
 
     }
 ?>
@@ -55,6 +56,8 @@ include_once '../database/conexao.php';
                     <form action="login.php" method="post" class="fCadastro" required>
                         <label for="fcEmail">Email:</label>
                         <input type="email" name = "email" placeholder = "Digite seu Email" required>
+                        <label for="fcNome">Nome:</label>
+                        <input type="text" name = "nome" placeholder = "Digite seu Nome" required>
                         <label for="fcUsuario">Usuário:</label>
                         <input type="text" name = "usuario" placeholder = "Digite seu Usuário" required>
                         <label for="fcSenha">Senha:</label>

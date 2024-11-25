@@ -66,7 +66,6 @@
     width: 100%;
     height: 100%; /* Ajusta o tamanho da imagem para caber no container */
     /*object-fit: cover; /* Mantém as proporções da imagem */
-    border-radius: 8px 0 0 8px; /* Adiciona bordas arredondadas na imagem à esquerda */
 }
 
 .container img {
@@ -165,8 +164,24 @@ label[for="flSenha"] {
     font-weight: bold;
 }
 
+.btn.btn-cadastrar {
+    margin: 0 auto;
+    margin-top: 1rem;
+    display: block;
+    text-align: center;
+}
+
+.contentCadastro p {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
 label[for="fcEmail"] {
     margin-top: 3.125rem;
+}
+
+label[for="fcNome"] {
+    margin-top: 1.25rem;
 }
 
 label[for="fcUsuario"] {
@@ -181,7 +196,6 @@ label[for="fcSenha"] {
     position: absolute;
     display: flex;
     color: #000;
-    display: flex;
     justify-content: space-between;
     align-items: stretch; /* Garante que a imagem e o formulário tenham a mesma altura */
     width: 80%;
