@@ -4,6 +4,7 @@ include_once '../header/header.php';
 include_once '../database/conexao.php';
 
 $errorMessage = ""; 
+$successMessage = ""; 
 
 $user = $name = $email = $password = "";
 
@@ -13,30 +14,44 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = $_POST['senha'];
 
-    $query = "INSERT INTO avaliacao(nota, comentario) VALUES (NULL, NULL)";
-    mysqli_query($conn, $query);
-    $avaliacao_id = mysqli_insert_id($conn);
+    $checkQuery = "SELECT * FROM login WHERE user = '$user' OR email = '$email'";
+    $checkResult = mysqli_query($conn, $checkQuery);
 
-    $result = mysqli_query($conn, "INSERT INTO login(user, nome, email, senha, avaliacao_idavaliacao) 
-                                   VALUES ('$user', '$name', '$email', '$password', '$avaliacao_id')");        
-
-    if (!$result) {
+    if (mysqli_num_rows($checkResult) > 0) {
         $errorMessage = "Email '$email' e/ou Usuário '$user' já está cadastrado!";
     } else {
-        $user = $name = $email = $password = "";
+        $query = "INSERT INTO avaliacao(nota, comentario) VALUES (NULL, NULL)";
+        mysqli_query($conn, $query);
+        $avaliacao_id = mysqli_insert_id($conn);
+
+        $result = mysqli_query($conn, "INSERT INTO login(user, nome, email, senha, avaliacao_idavaliacao) 
+                                       VALUES ('$user', '$name', '$email', '$password', '$avaliacao_id')");
+
+        if ($result) {
+            $successMessage = "Conta criada com sucesso!";
+            $user = $name = $email = $password = ""; 
+        } else {
+            $errorMessage = "Erro ao criar conta. Tente novamente.";
+        }
     }
 }
-?>
 
+?>
 
     <div class="container">
         <div class="content">
 
-            <?php if (!empty($errorMessage)): ?>
-                <script>
-                    alert("<?php echo $errorMessage; ?>");
-                </script>
-            <?php endif; ?>
+        <?php if (!empty($errorMessage)): ?>
+            <script>
+                alert("<?php echo $errorMessage; ?>");
+            </script>
+        <?php endif; ?>
+
+        <?php if (!empty($successMessage)): ?>
+            <script>
+                alert("<?php echo $successMessage; ?>");
+            </script>
+        <?php endif; ?>
 
             <div class="contentLogin">
 

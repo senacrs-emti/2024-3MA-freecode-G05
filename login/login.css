@@ -13,33 +13,16 @@
 }
 
 .content {
-    /*color: #000;
-    width: 80%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    position: relative;
-    border-radius: 8px; */
     color: #000;
     display: flex;
     justify-content: space-between;
-    align-items: stretch; /* Garante que a imagem e o formulário tenham a mesma altura */
+    align-items: stretch; 
     width: 80%;
-    max-width: 736px; /* Limita a largura máxima */
+    max-width: 736px; 
     background-color: #FFF;
     border-radius: 8px;
-    overflow: hidden; /* Remove qualquer excesso de conteúdo */
+    overflow: hidden; 
 }
-
-/*.content::before{
-    content: "";
-    position: absolute;
-    width: 40%;
-    height: 100%;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-}*/
-
 .title {
     font-size: 35px;
     font-weight: normal;
@@ -53,8 +36,8 @@
     width: 130px;
     height: 11px;
     background-color: #000;
-    margin: 10px auto 0; /* Centraliza e adiciona espaçamento */
-    border-radius: 5px; /* Opcional */
+    margin: 10px auto 0; 
+    border-radius: 5px; 
 }
 
 .villa {
@@ -64,8 +47,7 @@
 
 .villa img , .alanpa img {
     width: 100%;
-    height: 100%; /* Ajusta o tamanho da imagem para caber no container */
-    /*object-fit: cover; /* Mantém as proporções da imagem */
+    height: 100%; 
 }
 
 .container img {
@@ -81,7 +63,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center; 
     margin-left: 4.325rem;
     width: 100%;
     background-color: #FFF;
@@ -91,7 +73,7 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza o conteúdo horizontalmente */
+    align-items: center; 
     margin-left: 0;
     width: 100%;
     background-color: #FFF;
@@ -101,17 +83,17 @@
 .fLogin{
     display: flex;
     flex-direction: column;
-    width: 100%; /* Ajusta para ocupar o tamanho do pai */
-    max-width: 400px; /* Define um limite máximo */
-    margin: 0 auto; /* Centraliza horizontalmente */
+    width: 100%; 
+    max-width: 400px; 
+    margin: 0 auto; 
 }
 
 .fCadastro {
     display: flex;
     flex-direction: column;
-    width: 100%; /* Ajusta para ocupar o tamanho do pai */
-    max-width: 270px; /* Define um limite máximo */
-    margin: 0 auto; /* Centraliza horizontalmente */
+    width: 100%; 
+    max-width: 270px; 
+    margin: 0 auto; 
 }
 
 .fLogin label, .fCadastro label {
@@ -127,15 +109,15 @@ label[for="flSenha"] {
 }
 
 .fLogin input,.fCadastro input {
-    height: 40px; /* Mantém a altura */
-    width: 100%; /* Ajusta para ocupar toda a largura do pai */
+    height: 40px; 
+    width: 100%; 
     border: none;
     border-radius: 12px;
     background-color: #D7D7DC;
     margin-top: 8px;
     margin-bottom: 10px;
-    padding: 0 10px; /* Adiciona espaçamento interno */
-    box-sizing: border-box; /* Inclui padding no cálculo da largura */
+    padding: 0 10px; 
+    box-sizing: border-box; 
 }
 
 #togglePassword {
@@ -207,12 +189,12 @@ label[for="fcSenha"] {
     display: flex;
     color: #000;
     justify-content: space-between;
-    align-items: stretch; /* Garante que a imagem e o formulário tenham a mesma altura */
+    align-items: stretch; 
     width: 80%;
-    max-width: 736px;  /* Limita a largura máxima */ 
+    max-width: 736px;  
     background-color: #FFF;
     border-radius: 8px;
-    overflow: hidden; /* Remove qualquer excesso de conteúdo */
+    overflow: hidden; 
 }
 
 .contentCadastro .alanpa {
