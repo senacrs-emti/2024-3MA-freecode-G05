@@ -1,8 +1,9 @@
 <?php
-include '../configuracao.php'; // configuracao
-include '../header/header.php'; // Inclui o header
+include '../configuracao.php'; 
+include '../header/header.php'; 
+session_start();
+print_r($_SESSION);
 
-// Conteúdo da página principal
 ?>
 <section>
     <!-- Tabela da Esquerda com barra de rolagem na esquerda -->
@@ -55,5 +56,5 @@ include '../header/header.php'; // Inclui o header
 </section>
 
 <?php
-include '../footer/footer.php'; // Inclui o footer
+include '../footer/footer.php'; 
 ?>

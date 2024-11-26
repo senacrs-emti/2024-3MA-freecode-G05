@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
 
                 <div class="login">
                     <h2 class="title">Login</h2>
-                    <form action="login.php" method="post" class="fLogin">
+                    <form action="testelogin.php" method="post" class="fLogin">
                         <label for="flUsuario">Usuário:</label>
                         <input type="text" name="usuario" placeholder="Digite seu Usuário" required>
                         <label for="flSenha">Senha:</label>
