@@ -65,10 +65,15 @@ if (isset($_POST['submit'])) {
                         <label for="flUsuario">Usuário:</label>
                         <input type="text" name="usuario" placeholder="Digite seu Usuário" required>
                         <label for="flSenha">Senha:</label>
-                        <input type="password" name="senha" placeholder="Digite sua Senha" required>
+                        <div style="position: relative;">
+                            <input type="password" id="passwordLogin" name="senha" placeholder="Digite sua Senha" required>
+                            <button type="button" id="togglePasswordLogin">
+                                <i class="fa-solid fa-eye" id="iconToggleLogin"></i>
+                            </button>
+                        </div>
                         <button type="submit" name="submit" class="btn btn-entrar">Entrar</button>
                     </form>
-                    <p>Ainda não tem conta?<a id="btnCadastro" href="#"><u>Cadastre-se</u></a></p>
+                    <p>Ainda não tem conta? <a id="btnCadastro" href="#"><u>Cadastre-se</u></a></p>
                 </div>
             </div>
 
@@ -80,28 +85,27 @@ if (isset($_POST['submit'])) {
 
                 <div class="cadastro">
                     <h2 class="title">Cadastre-se</h2>
-                    <form action="login.php" method="post" class="fCadastro">
-                        <label for="fcEmail">Email:</label>
-                        <input type="email" name="email" placeholder="Digite seu Email" value="<?php echo htmlspecialchars($email); ?>" required>
-                        <label for="fcNome">Nome:</label>
-                        <input type="text" name="nome" placeholder="Digite seu Nome" value="<?php echo htmlspecialchars($name); ?>" required>
-                        <label for="fcUsuario">Usuário:</label>
-                        <input type="text" name="usuario" placeholder="Digite seu Usuário" value="<?php echo htmlspecialchars($user); ?>" required>
-                        <label for="fcSenha">Senha:</label>
-                        <div style="position: relative;">
-                            <input type="password" id="password" name="senha" placeholder="Digite sua Senha" value="<?php echo htmlspecialchars($password); ?>" required>
-                            <button type="button" id="togglePassword">
-                                <i class="fa-solid fa-eye" id="iconToggle"></i>
-                            </button>
-                        </div>
-                        <button type="submit" name="submit" class="btn btn-cadastrar">Cadastrar</button>
-                    </form>
-                    <p>Já tem conta?<a id="btnLogin" href="#"><u>Entre</u></a></p>
+                        <form action="login.php" method="post" class="fCadastro">
+                            <label for="fcEmail">Email:</label>
+                            <input type="email" name="email" placeholder="Digite seu Email" value="<?php echo htmlspecialchars($email); ?>" required>
+                            <label for="fcNome">Nome:</label>
+                            <input type="text" name="nome" placeholder="Digite seu Nome" value="<?php echo htmlspecialchars($name); ?>" required>
+                            <label for="fcUsuario">Usuário:</label>
+                            <input type="text" name="usuario" placeholder="Digite seu Usuário" value="<?php echo htmlspecialchars($user); ?>" required>
+                            <label for="fcSenha">Senha:</label>
+                            <div style="position: relative;">
+                                <input type="password" id="passwordCadastro" name="senha" placeholder="Digite sua Senha" required>
+                                <button type="button" id="togglePasswordCadastro">
+                                    <i class="fa-solid fa-eye" id="iconToggleCadastro"></i>
+                                </button>
+                            </div>
+                            <button type="submit" name="submit" class="btn btn-cadastrar">Cadastrar</button>
+                        </form>
+                    <p>Já tem conta? <a id="btnLogin" href="#"><u>Entre</u></a></p>
                 </div>
             </div>
         </div>
     </div>
-
 
     <script src="login.js"></script>
 <?php

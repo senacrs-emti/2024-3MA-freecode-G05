@@ -186,7 +186,7 @@ label[for="fcSenha"] {
 
 .contentCadastro {
     position: absolute;
-    display: flex;
+    display: none;
     color: #000;
     justify-content: space-between;
     align-items: stretch; 
@@ -203,4 +203,30 @@ label[for="fcSenha"] {
 
 .contentCadastro .cadastro {
     order: 1;
+}
+
+button#togglePasswordLogin, button#togglePasswordCadastro {
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Espaçamento do lado direito */
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+button#togglePasswordLogin i, button#togglePasswordCadastro i {
+    font-size: 16px;
+    color: #666;
+}
+
+#btnCadastro, #btnLogin {
+    text-decoration: none; 
+    color: #000;
+    transition: color 0.3s ease, transform 0.3s ease; 
+}
+
+#btnCadastro, #btnLogin:hover {
+    font-weight: bold; 
+    transform: scale(1.4); 
 }
