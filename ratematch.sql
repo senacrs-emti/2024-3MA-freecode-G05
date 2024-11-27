@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 22/11/2024 às 12:01
+-- Tempo de geração: 27/11/2024 às 13:04
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.0.30
 
@@ -113,26 +113,26 @@ CREATE TABLE `times` (
 --
 
 INSERT INTO `times` (`idtime`, `nome`, `escudo`, `sigla`, `estadio`, `mascote`) VALUES
-(1, 'Grêmio', 'gremio.jpg', 'GRE', 'gremio.jpg', 'gremio.jpg'),
-(2, 'Internacional', 'internacional.jpg', 'INT', 'internacional.jpg', 'internacional.jpg'),
-(3, 'Flamengo', 'flamengo.jpg', 'FLA', 'flamengo.jpg', 'flamengo.jpg'),
-(4, 'Atlético GO', 'atletico-go.jpg', 'ACG', 'atletico-go.jpg', 'atletico-go.jpg'),
-(5, 'Atlético MG', 'atletico-mg.jpg', 'CAM', 'atletico-mg.jpg', 'atletico-mg.jpg'),
-(6, 'Botafogo', 'botafogo.jpg', 'BOT', 'botafogo.jpg', 'botafogo.jpg'),
-(7, 'Athletico PR', 'athletico-pr.jpg', 'CAP', 'athletico-pr.jpg', 'athletico-pr.jpg'),
-(8, 'Corinthians', 'corinthians.jpg', 'COR', 'corinthians.jpg', 'corinthians.jpg'),
-(9, 'Criciúma', 'criciuma.jpg', 'CRI', 'criciuma.jpg', 'criciuma.jpg'),
-(10, 'Cruzeiro', 'cruzeiro.jpg', 'CRU', 'cruzeiro.jpg', 'cruzeiro.jpg'),
-(11, 'Cuiaba', 'cuiaba.jpg', 'CUI', 'cuiaba.jpg', 'cuiaba.jpg'),
-(12, 'Bahia', 'bahia.jpg', 'BAH', 'bahia.jpg', 'bahia.jpg'),
-(13, 'Fluminense', 'fluminense.jpg', 'FLU', 'fluminense.jpg', 'fluminense.jpg'),
-(14, 'Fortaleza', 'fortaleza.jpg', 'FOR', 'fortaleza.jpg', 'fortaleza.jpg'),
-(15, 'Juventude', 'juventude.jpg', 'JUV', 'juventude.jpg', 'juventude.jpg'),
-(16, 'Palmeiras', 'palmeiras.jpg', 'PAL', 'palmeiras.jpg', 'palmeiras.jpg'),
-(17, 'Bragantino', 'bragantino.jpg', 'RBG', 'bragantino.jpg', 'bragantino.jpg'),
-(18, 'São Paulo', 'saopaulo.jpg', 'SAO', 'saopaulo.jpg', 'saopaulo.jpg'),
-(19, 'Vasco', 'vasco.jpg', 'VAS', 'vasco.jpg', 'vasco.jpg'),
-(20, 'Vitória', 'vitoria.jpg', 'VIT', 'vitoria.jpg', 'vitoria.jpg');
+(1, 'Grêmio', 'gremio.png', 'GRE', 'gremio.png', 'gremio.png'),
+(2, 'Internacional', 'internacional.png', 'INT', 'internacional.png', 'internacional.png'),
+(3, 'Flamengo', 'flamengo.png', 'FLA', 'flamengo.png', 'flamengo.png'),
+(4, 'Atlético GO', 'atleticogo.png', 'ACG', 'atleticogo.png', 'atleticogo.png'),
+(5, 'Atlético MG', 'atleticomg.png', 'CAM', 'atleticomg.png', 'atleticomg.png'),
+(6, 'Botafogo', 'botafogo.png', 'BOT', 'botafogo.png', 'botafogo.png'),
+(7, 'Athletico PR', 'athleticopr.png', 'CAP', 'athleticopr.png', 'athleticopr.png'),
+(8, 'Corinthians', 'corinthians.png', 'COR', 'corinthians.png', 'corinthians.png'),
+(9, 'Criciúma', 'criciuma.png', 'CRI', 'criciuma.png', 'criciuma.png'),
+(10, 'Cruzeiro', 'cruzeiro.png', 'CRU', 'cruzeiro.png', 'cruzeiro.png'),
+(11, 'Cuiaba', 'cuiaba.png', 'CUI', 'cuiaba.png', 'cuiaba.png'),
+(12, 'Bahia', 'bahia.png', 'BAH', 'bahia.png', 'bahia.png'),
+(13, 'Fluminense', 'fluminense.png', 'FLU', 'fluminense.png', 'fluminense.png'),
+(14, 'Fortaleza', 'fortaleza.png', 'FOR', 'fortaleza.png', 'fortaleza.png'),
+(15, 'Juventude', 'juventude.png', 'JUV', 'juventude.png', 'juventude.png'),
+(16, 'Palmeiras', 'palmeiras.png', 'PAL', 'palmeiras.png', 'palmeiras.png'),
+(17, 'Bragantino', 'bragantino.png', 'RBG', 'bragantino.png', 'bragantino.png'),
+(18, 'São Paulo', 'saopaulo.png', 'SAO', 'saopaulo.png', 'saopaulo.png'),
+(19, 'Vasco', 'vasco.png', 'VAS', 'vasco.png', 'vasco.png'),
+(20, 'Vitória', 'vitoria.png', 'VIT', 'vitoria.png', 'vitoria.png');
 
 --
 -- Índices para tabelas despejadas
