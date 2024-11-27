@@ -31,7 +31,7 @@ if( !in_array($file,$negarPaginas) ){
         
         <!-- menu -->
         <nav class="menu">
-            <a href="../index.php">Jogos</a>
+            <a href="../main/index.php">Jogos</a>
             <a href="#">Feed</a>
         </nav>
         

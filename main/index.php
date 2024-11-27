@@ -1,29 +1,26 @@
 <?php
 include '../configuracao.php'; 
 include '../header/header.php'; 
-session_start();
-print_r($_SESSION);
-
 ?>
 <section>
     <!-- Tabela da Esquerda com barra de rolagem na esquerda -->
     <div class="partidas_left">
         <!-- Conteúdo da tabela da esquerda (jogos) -->
-        <div class="barra">
+        <a href="../partida/partida.php" class="barra">
             <img class="times" src="../img/gremio.png" alt=""><p>GRE</p>
             <p>X</p>
             <p>INT</p><img class="times" src="../img/inter.png" alt="">
-        </div>
-        <div class="barra">
+        </a>
+        <a href="#" class="barra">
             <img class="times" src="../img/FLA.png" alt=""><p>FLA</p>
             <p>X</p>
             <p>VAS</p><img class="times" src="../img/VAS.png" alt="">
-        </div>
-        <div class="barra">
+        </a>
+        <a href="detalhes_partida.php?partida=cru_cam" class="barra">
             <img class="times" src="../img/CRU.png" alt=""><p>CRU</p>
             <p>X</p>
             <p>CAM</p><img class="times" src="../img/CAM.png" alt="">
-        </div>
+        </a>
         <!-- Outros jogos podem ser adicionados aqui -->
     </div>
 
