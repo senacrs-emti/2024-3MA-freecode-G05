@@ -2,42 +2,55 @@
 include_once 'conexao.php';
 include './header/header.php'; // Inclui o header
 
+//TEM Q FAZER INNER JOIN
+// comando sql para capturar os dados
+$sql = "SELECT
+        p.data,
+        p.estadio,
+        p.idtimeCasa,
+        p.idtimeVis,
+        tc.nome As NomeTimeCasa,
+        tc.escudo AS EscudoTimeCasa,
+        tc.sigla AS SiglaTimeCasa,
+        tv.nome As NomeTimeVis,
+        tv.escudo AS EscudoTimeVis,
+        tv.sigla AS SiglaTimeVis
+        FROM partidas AS p
+        INNER JOIN times AS tc
+        ON p.idtimeCasa = tc.idtime
+        INNER JOIN times AS tv
+        ON p.idtimeVis = tv.idtime;";
+// executa o comando
+$result = mysqli_query( $conn, $sql );
+// transforma o resultado em dados 
+$data = mysqli_fetch_assoc($result);
 // Conteúdo da página principal
 ?>
+
+
+
 <section>
     <!-- Tabela da Esquerda com barra de rolagem na esquerda -->
     <div class="partidas_left">
         <!-- Conteúdo da tabela da esquerda (jogos) -->
         <div class="titulo-classificacao">PRÓXIMAS PARTIDAS</div>
-        <div class="barra">
-            <img class="times" src="./img/gremio.png" alt=""><p>
-                <?php
-                //TEM Q FAZER INNER JOIN
-                // comando sql para capturar os dados
-                $sql = "SELECT sigla FROM times WHERE idtime=1";
-                // executa o comando
-                $result = mysqli_query( $conn, $sql );
-                // transforma o resultado em dados 
-                $data = mysqli_fetch_assoc($result);
+        <?php
+        if (mysqli_num_rows($result) > 0) {
+            // output data of each row
+            while($row = mysqli_fetch_assoc($result)) {
+            //echo "Escudo: " . $row["EscudoTimeCasa"]. " - Sigla: " . $row["SiglaTimeCasa"]. "X" ."Sigla" . $row["SiglaTimeVis"]. "Escudo". $row["EscudoTimeVis"]."<br>";
+            ?>
+            <div class="barra">
+                <img class="times" src="./img/<?php echo $row["EscudoTimeCasa"];?>" alt=""><p><?php echo $row["SiglaTimeCasa"];?></p>
+                <p>X</p>
+                <p><?php echo $row["SiglaTimeVis"];?></p><img class="times" src="./img/<?php echo $row["EscudoTimeVis"];?>" alt="">
+            </div>
+            <?php
+            }
+        }
+        ?>
+        
 
-                echo '<pre>';
-                var_dump($data);
-                echo '</pre>';
-                ?>
-            </p>
-            <p>X</p>
-            <p>INT</p><img class="times" src="./img/inter.png" alt="">
-        </div>
-        <div class="barra">
-            <img class="times" src="./img/FLA.png" alt=""><p>FLA</p>
-            <p>X</p>
-            <p>VAS</p><img class="times" src="./img/VAS.png" alt="">
-        </div>
-        <div class="barra">
-            <img class="times" src="./img/CRU.png" alt=""><p>CRU</p>
-            <p>X</p>
-            <p>CAM</p><img class="times" src="./img/CAM.png" alt="">
-        </div>
         <!-- Outros jogos podem ser adicionados aqui -->
     </div>
 
