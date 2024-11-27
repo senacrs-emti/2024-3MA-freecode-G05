@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Partidas</title>
     <link rel="stylesheet" href="./header/topo.css">
-    <link rel="stylesheet" href="./gengar.css">
+    <link rel="stylesheet" href="./index.css">
     <link rel="stylesheet" href="./tab_classificacao.css">
     <link rel="stylesheet" href="./footer/baixo.css">
     <link rel="stylesheet" href="./partida/partida.css">
