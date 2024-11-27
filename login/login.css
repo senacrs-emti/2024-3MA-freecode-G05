@@ -226,7 +226,7 @@ button#togglePasswordLogin i, button#togglePasswordCadastro i {
     transition: color 0.3s ease, transform 0.3s ease; 
 }
 
-#btnCadastro, #btnLogin:hover {
+#btnCadastro:hover, #btnLogin:hover {
     font-weight: bold; 
     transform: scale(1.4); 
 }

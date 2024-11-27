@@ -1,0 +1,231 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ 
+.container-partida {
+    position: relative;
+    width: 1404px; 
+    height: 200px; 
+    overflow: hidden;
+}
+ 
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    filter: blur(5px);
+    transform: scale(1.1); 
+    z-index: -1;
+}
+ 
+.content-partida {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+ 
+.placar {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    font-size: 60px;
+}
+ 
+.time {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+ 
+.logo-time {
+    width: 100px; 
+    height: 100px;
+}
+ 
+.resultado, .x {
+    font-size: 60px;
+}
+ 
+.timeline {
+    width: 450px;
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 8px;
+    font-family: "Inria Sans", serif;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    position: relative;
+    color: #000;
+}
+ 
+.recFimDeJogo, .recIntervalo {
+    background-color: white;
+    text-align: center;
+    margin: 20px 0; 
+    padding: 5px 0;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 20px;
+}
+ 
+.event {
+    display: flex;
+    align-items: center;
+    margin: 30px 0; 
+    gap: 5px;
+}
+ 
+.event-time1 {
+    justify-content: flex-start;
+    text-align: left;
+}
+ 
+.event-time2 {
+    justify-content: flex-end;
+    text-align: right;
+}
+ 
+.minute {
+    font-weight: bold;
+    font-size: 20px;
+}
+ 
+.player, .sub-out {
+    font-size: 20px;
+}
+ 
+.icon {
+    width: 30px; 
+    height: 30px;
+}
+ 
+
+.timeline-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 100px;
+    background-color: #FFFF;
+}
+ 
+
+.timeline {
+    width: 40%; 
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 8px;
+    font-family: "Inria Sans", serif;
+    position: relative;
+    margin-left: 0.1%;
+}
+ 
+.comentario {
+    display: flex;
+    align-items: flex-start; 
+    gap: 15px;
+    border-radius: 10px;
+    padding: 15px;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: #f2f2f2; 
+    word-wrap: break-word; 
+}
+ 
+.texto-comentario {
+    display: block;
+    color: #160f0f;
+    font-size: 14px;
+    line-height: 1.5; 
+    white-space: normal; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    width: 100%; 
+}
+ 
+.textarea-comentario {
+    width: 100%; 
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    margin-top: 5px;
+    resize: none; 
+    background-color: transparent; 
+    border: none;
+}
+ 
+.textarea-comentario:focus {
+    outline: none; 
+}
+ 
+.botao-salvar {
+    margin-top: 5px;
+    padding: 8px 12px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 100%;
+}
+ 
+.botao-salvar:hover {
+    background-color: #dedede; 
+}
+ 
+.comentarios-container {
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column; 
+    gap: 20px; 
+    align-items: flex-start; 
+}
+ 
+.add-comentario-btn {
+    width: 60px;
+    height: 60px;
+    background-color: #f2f2f2; 
+    color: black; 
+    font-size: 45px; 
+    font-weight: bold; 
+    border: none; 
+    border-radius: 50%; 
+    justify-content: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); 
+    cursor: pointer; 
+    transition: transform 0.2s ease; 
+}
+ 
+.add-comentario-btn:hover {
+    transform: scale(1.1); 
+    background-color: #dedede; 
+}
+ 
+.add-comentario-btn:active {
+    transform: scale(1); 
+    background-color: #dedede; 
+}
+ 
+.foto-perfil img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; 
+    object-fit: cover;
+}
+
+.id-perfil {
+    color: #000;
+}

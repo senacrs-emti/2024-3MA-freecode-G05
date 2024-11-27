@@ -25,6 +25,9 @@ setupPasswordToggle('passwordCadastro', 'togglePasswordCadastro', 'iconToggleCad
 const btnCadastro = document.getElementById('btnCadastro');
 const btnLogin = document.getElementById('btnLogin');
 
+let footer = document.querySelector('.footer');
+footer.style = 'margin-top:5%!important;';
+
 const contentLogin = document.querySelector('.contentLogin');
 const contentCadastro = document.querySelector('.contentCadastro');
 
@@ -32,10 +35,12 @@ btnCadastro.addEventListener('click', (event) => {
     event.preventDefault();
     contentLogin.style.display = 'none';
     contentCadastro.style.display = 'flex';
+    footer.style = 'margin-top:50%!important;';
 });
 
 btnLogin.addEventListener('click', (event) => {
     event.preventDefault();
     contentCadastro.style.display = 'none';
     contentLogin.style.display = 'flex';
+    footer.style = 'margin-top:5%!important;';
 });
