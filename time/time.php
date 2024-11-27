@@ -11,9 +11,9 @@
 </head>
 <body>
     <header>
-        <img src="img/gremio.png">
-        <h1>Grêmio Foot-ball Porto Alegrense</h1>
-        <img src="img/mascotes/gremio.png">
+        <img src="../img/gremio.png">
+        <h1>Grêmio</h1>
+        <img src="../img/mascotes/gremio.png">
     </header>
 </body>
 </html>
