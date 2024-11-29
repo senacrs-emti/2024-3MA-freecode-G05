@@ -61,3 +61,37 @@ function salvarComentario(conteudoComentario, texto) {
 
     conteudoComentario.appendChild(textoComentario);
 }
+
+function abrirModal() {
+    const modal = document.getElementById('editModal');
+    modal.style.display = 'flex'; // Torna o modal visível
+}
+
+// Fecha o modal ao clicar no botão ou fora do conteúdo
+function fecharModal() {
+    const modal = document.getElementById('editModal');
+    modal.style.display = 'none';
+}
+
+// Salva as alterações do perfil
+function salvarEdicao() {
+    const username = document.getElementById('username').value;
+    const description = document.getElementById('description').value;
+
+    // Atualiza as informações no perfil
+    document.querySelector('.profile-info h1').textContent = username;
+    document.querySelector('.profile-info p').textContent = description;
+
+    fecharModal(); // Fecha o modal
+}
+
+// Fecha o modal ao clicar fora do conteúdo
+window.addEventListener('click', function (event) {
+    const modal = document.getElementById('editModal');
+    const modalContent = modal.querySelector('.modal-content');
+
+    // Se o clique não foi no conteúdo do modal e o modal está aberto
+    if (event.target === modal) {
+        fecharModal();
+    }
+});

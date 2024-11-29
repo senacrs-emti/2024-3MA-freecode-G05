@@ -23,7 +23,7 @@
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas turpis enim, scelerisque at enim at.</p>
   </div>
 
-  <button class="edit-button">Editar Perfil</button>
+  <button class="edit-button" onclick="abrirModal()">Editar Perfil</button>
 
   <div class="posts">
     <div class="post">
@@ -51,5 +51,21 @@
   <button class="add-comentario-btn" onclick="mostrarInputComentario()">+</button>
 
   <script src="perfil.js"></script>
+
+  <!-- Modal para editar o perfil -->
+<div id="editModal" class="modal">
+  <div class="modal-content">
+    <span class="close-button" onclick="fecharModal()">&times;</span>
+    <h2>Editar Perfil</h2>
+    <label for="username">Nome de Usuário:</label>
+    <input type="text" id="username" value="_viniross">
+
+    <label for="description">Descrição:</label>
+    <textarea id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas turpis enim, scelerisque at enim at.</textarea>
+
+    <button class="salvar-perfil" onclick="salvarEdicao()">Salvar</button>
+  </div>
+</div>
+
 </body>
 </html>
