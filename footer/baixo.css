@@ -17,14 +17,24 @@ body {
 }
 
 .footer {
-    background-color: #ffffff;
-    text-align: center;
-    padding: 20px;
-    color: #000000;
+    background-color: #ffffff!important;
+    text-align: center!important;
+    padding: 20px!important;
+    color: #000000!important;
     /* font-size: 30px; */
-    font-family: "Inria Sans", serif;
-    font-style: normal;
-    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.5);
+    font-family: "Inria Sans", serif!important;
+    font-style: normal!important;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.5)!important;
     margin-top: 100%;
-    text-decoration: none;
+    text-decoration: none!important;
+}
+
+.footer p{
+    background-color: #ffffff!important;
+    text-align: center!important;
+    color: #000000!important;
+    /* font-size: 30px; */
+    font-family: "Inria Sans", serif!important;
+    font-style: normal!important;
+    text-decoration: none!important;
 }
