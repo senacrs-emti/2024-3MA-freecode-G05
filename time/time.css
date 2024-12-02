@@ -57,6 +57,11 @@ header {
     margin-left: 385px;
 }
 
+h2 {
+    margin-top: 15px;
+    margin-left: 530px; 
+}
+
 .times-container {
     display: flex;
     align-items: center;

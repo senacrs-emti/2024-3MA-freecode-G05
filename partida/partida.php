@@ -12,6 +12,8 @@ $sql = "SELECT
         p.idpartidas,
         p.data,
         p.estadio,
+        p.idtimeCasa,
+        p.idtimeVis,
         tc.nome AS NomeTimeCasa,
         tc.escudo AS EscudoTimeCasa,
         tc.sigla AS SiglaTimeCasa,
@@ -38,15 +40,19 @@ if (!$partida) {
         <div class="content-partida">
             <div class="placar">
                 <div class="time">
-                    <img src="<?php echo $varPathLocal;?>img/times/<?php echo $partida['EscudoTimeCasa'];?>" alt="<?php echo $partida['NomeTimeCasa']; ?>" class="logo-time">
-                    <span class="nome-time"><?php echo $partida['SiglaTimeCasa']; ?></span>
+                    <a href="../time/time.php?t=<?php echo $partida['idtimeCasa']; ?>">
+                        <img src="<?php echo $varPathLocal;?>img/times/<?php echo $partida['EscudoTimeCasa'];?>" alt="<?php echo $partida['NomeTimeCasa']; ?>" class="logo-time">
+                    </a>
+                        <span class="nome-time"><?php echo $partida['SiglaTimeCasa']; ?></span>
                 </div>
                 <span class="resultado">1</span>
                 <span class="x">X</span>
                 <span class="resultado">1</span>
                 <div class="time">
                     <span class="nome-time"><?php echo $partida['SiglaTimeVis']; ?></span>
-                    <img src="<?php echo $varPathLocal;?>img/times/<?php echo $partida['EscudoTimeVis'];?>" alt="<?php echo $partida['NomeTimeVis']; ?>" class="logo-time">
+                    <a href="../time/time.php?t=<?php echo $partida['idtimeVis']; ?>">
+                        <img src="<?php echo $varPathLocal;?>img/times/<?php echo $partida['EscudoTimeVis'];?>" alt="<?php echo $partida['NomeTimeVis']; ?>" class="logo-time">
+                    </a>
                 </div>
             </div>
         </div>

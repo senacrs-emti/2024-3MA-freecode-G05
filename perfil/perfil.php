@@ -80,7 +80,7 @@
                 <option value="RBG">Red Bull Bragantino</option>
                 <option value="SAO">São Paulo</option>
                 <option value="VAS">Vasco da Gama</option>
-                <option value="VITz">Vitória</option>
+                <option value="VIT">Vitória</option>
             </select>
         </form>
             <button class="salvar-perfil" onclick="salvarEdicao()">Salvar</button>

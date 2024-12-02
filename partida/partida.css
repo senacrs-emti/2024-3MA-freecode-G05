@@ -54,6 +54,10 @@
 .resultado, .x {
     font-size: 60px;
 }
+
+.resultado {
+    display: none;
+}
  
 .timeline {
     width: 450px;
@@ -228,4 +232,9 @@
 
 .id-perfil {
     color: #000;
+}
+
+
+a {
+    text-decoration: none;
 }
