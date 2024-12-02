@@ -4,28 +4,32 @@ include_once '../database/conexao.php';
 include_once '../login/validacao.php';
 include_once '../header/header.php';
 
-// comando sql para capturar os dados
+// Capture o ID da partida pela URL
+$idPartida = isset($_GET['p']) ? intval($_GET['p']) : 0;
+
+// Evite SQL Injection e busque os dados da partida
 $sql = "SELECT
         p.idpartidas,
         p.data,
         p.estadio,
-        p.idtimeCasa,
-        p.idtimeVis,
-        tc.nome As NomeTimeCasa,
+        tc.nome AS NomeTimeCasa,
         tc.escudo AS EscudoTimeCasa,
         tc.sigla AS SiglaTimeCasa,
-        tv.nome As NomeTimeVis,
+        tv.nome AS NomeTimeVis,
         tv.escudo AS EscudoTimeVis,
         tv.sigla AS SiglaTimeVis
-        FROM partidas AS p
-        INNER JOIN times AS tc
-        ON p.idtimeCasa = tc.idtime
-        INNER JOIN times AS tv
-        ON p.idtimeVis = tv.idtime;";
-// executa o comando
-$result = mysqli_query( $conn, $sql );
-// transforma o resultado em dados
-$data = mysqli_fetch_assoc($result);
+    FROM partidas AS p
+    INNER JOIN times AS tc ON p.idtimeCasa = tc.idtime
+    INNER JOIN times AS tv ON p.idtimeVis = tv.idtime
+    WHERE p.idpartidas = $idPartida;";
+
+$result = mysqli_query($conn, $sql);
+$partida = mysqli_fetch_assoc($result);
+
+// Verifique se a partida foi encontrada
+if (!$partida) {
+    die("Partida não encontrada!");
+}
 
 ?>
 
@@ -34,15 +38,15 @@ $data = mysqli_fetch_assoc($result);
         <div class="content-partida">
             <div class="placar">
                 <div class="time">
-                    <img src="<?php echo $varPathLocal;?>img/gremio.png" alt="Logo Grêmio" class="logo-time">
-                    <span class="nome-time">GRE</span>
+                    <img src="<?php echo $varPathLocal;?>img/times/<?php echo $partida['EscudoTimeCasa'];?>" alt="<?php echo $partida['NomeTimeCasa']; ?>" class="logo-time">
+                    <span class="nome-time"><?php echo $partida['SiglaTimeCasa']; ?></span>
                 </div>
                 <span class="resultado">1</span>
                 <span class="x">X</span>
                 <span class="resultado">1</span>
                 <div class="time">
-                    <span class="nome-time">INT</span>
-                    <img src="<?php echo $varPathLocal;?>img/inter.png" alt="Logo Internacional" class="logo-time">
+                    <span class="nome-time"><?php echo $partida['SiglaTimeVis']; ?></span>
+                    <img src="<?php echo $varPathLocal;?>img/times/<?php echo $partida['EscudoTimeVis'];?>" alt="<?php echo $partida['NomeTimeVis']; ?>" class="logo-time">
                 </div>
             </div>
         </div>
