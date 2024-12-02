@@ -16,6 +16,7 @@ $time = date("YmdHis").rand(1,9999);
     <link rel="stylesheet" href="<?php echo $varPathLocal;?>login/login.css?t=<?php echo $time;?>">
     <link rel="stylesheet" href="<?php echo $varPathLocal;?>partida/partida.css?t=<?php echo $time;?>">
     <link rel="stylesheet" href="<?php echo $varPathLocal;?>time/time.css?t=<?php echo $time;?>">
+    <link rel="stylesheet" href="<?php echo $varPathLocal;?>perfil/perfil.css?t=<?php echo $time;?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
