@@ -128,12 +128,16 @@
     gap: 15px;
     border-radius: 10px;
     padding: 15px;
-    width: 100%; /* Comentário ocupa toda a largura disponível */
+    width: 500px; /* Comentário ocupa toda a largura disponível */
     height: auto; /* Altura automática para ajustar conforme o conteúdo */
     box-sizing: border-box;
     overflow: hidden;
     background-color: #f2f2f2; /* Remove o fundo */
     word-wrap: break-word; /* Quebra palavras longas e força a quebra de linha */
+}
+
+.id-perfil{
+    margin-bottom: 5%;
 }
 
 /* Estilo do texto dentro do comentário */
@@ -146,6 +150,7 @@
     overflow: hidden; /* Impede texto extra de extrapolar */
     text-overflow: ellipsis; /* Adiciona "..." no final se necessário */
     width: 100%; /* Respeita a largura disponível */
+    word-break: break-all;
 }
 
 /* Estilo do textarea para adicionar comentário */
@@ -160,6 +165,7 @@
     resize: none; /* Impede redimensionamento manual */
     background-color: transparent; /* Remove fundo */
     border: none;
+    word-break: break-all;
 }
 
 /* Remove qualquer borda ao focar no campo */

@@ -152,6 +152,7 @@ body {
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 10px;
+    word-break: normal;
   }
   
   .comentario .foto-perfil img {
@@ -175,6 +176,7 @@ body {
     word-wrap: break-word; /* Quebra palavras longas */
     overflow-wrap: break-word; /* Adiciona uma proteção extra */
     line-height: 1.4; /* Espaçamento entre linhas */
+    word-break: break-all;
 }
 
 .textarea-comentario:focus {
@@ -233,8 +235,6 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
   text-align: left;
 }
-
-
 
 .close-button {
   position: absolute;
