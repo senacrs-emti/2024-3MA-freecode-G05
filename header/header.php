@@ -1,5 +1,5 @@
 <?php 
-$negarPaginas = array('partida.php', 'time.php');
+$negarPaginas = array('partida.php', 'time.php', 'perfil.php');
 $path = explode('/',$_SERVER['SCRIPT_NAME']);
 $file = end($path);
 $time = date("YmdHis").rand(1,9999);

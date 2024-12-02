@@ -4,7 +4,6 @@ include_once '../header/header.php';
 include_once '../database/conexao.php';
 ?>
 
-<body>
     <header>
         <img src="../img/gremio.png">
         <h1>Grêmio</h1>
@@ -22,10 +21,6 @@ include_once '../database/conexao.php';
         <p>Horário: 16:00</p>
     </div>
 </div>
-        <footer>
-        <?php
-            include_once '../footer/footer.php';
-        ?>
-        </footer>
-</body>
-</html>
+<?php
+    include_once '../footer/footer.php';
+?>
