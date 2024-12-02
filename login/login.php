@@ -106,7 +106,7 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
     </div>
-
+<script src="login.js"></script>
 <?php
 include_once '../footer/footer.php'; 
 ?>
