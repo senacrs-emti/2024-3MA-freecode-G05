@@ -1,0 +1,248 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    font-family: "Inria Sans", serif;
+    font-style: normal;
+  }
+  
+  .header {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  .header img {
+    width: 100%;
+    height: 80%;
+    object-fit: cover;
+  }
+  
+  .profile-picture {
+    position: absolute;
+    top: 100px;
+    left: 10%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    z-index: 2;
+  }
+  
+  .profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .profile-info {
+    /* text-align: center; */
+    margin-top: -4%;
+    margin-left: 16%;
+  }
+  
+  .profile-info h1 {
+    font-size: 24px;
+    margin: 10px 0 5px;
+  }
+  
+  .profile-info p {
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .edit-button {
+    position: absolute;
+    /* margin: 10px 0; */
+    margin-left: 80%;
+    margin-top: -4%;
+    padding: 5px 40px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    cursor: pointer;
+  }
+  
+  .posts {
+    margin: 20px auto;
+    margin-top: 7%;
+    max-width: 600px;
+  }
+  
+  .post {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .post img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .post-content {
+    flex: 1;
+  }
+  
+  .post-content h2 {
+    font-size: 14px;
+    margin: 0 0 5px;
+  }
+  
+  .post-content p {
+    font-size: 12px;
+    color: #555;
+  }
+  
+  .add-comentario-btn {
+    width: 60px;
+    height: 60px;
+    background-color: #f2f2f2; 
+    color: black;
+    font-size: 45px; 
+    font-weight: bold; 
+    border: none; 
+    border-radius: 50%; 
+    justify-content: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); 
+    cursor: pointer; 
+    transition: transform 0.2s ease; 
+    margin-left: 50%;
+    margin-bottom: 2%;
+    
+}
+
+.add-comentario-btn:hover {
+    transform: scale(1.1); 
+    background-color: #dedede; 
+}
+
+.add-comentario-btn:active {
+    transform: scale(1); 
+    background-color: #dedede; 
+}
+
+.comentarios-container {
+    margin: 20px auto;
+    max-width: 600px;
+  }
+  
+  .comentario {
+    display: flex;
+    gap: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    word-break: normal;
+  }
+  
+  .comentario .foto-perfil img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .textarea-comentario {
+    width: 100%;
+    height: 50px;
+    margin: 5px 0;
+    border: none; /* Remove a borda */
+    background-color: transparent; /* Fundo transparente */
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 10px; /* Espaçamento interno */
+    font-size: 14px; /* Tamanho da fonte */
+    color: #333; /* Cor do texto */
+    resize: none; /* Remove a barra de redimensionamento */
+    white-space: pre-wrap; /* Quebra de linha ao pressionar Enter */
+    word-wrap: break-word; /* Quebra palavras longas */
+    overflow-wrap: break-word; /* Adiciona uma proteção extra */
+    line-height: 1.4; /* Espaçamento entre linhas */
+    word-break: break-all;
+}
+
+.textarea-comentario:focus {
+    outline: none; /* Remove o contorno padrão ao focar */
+}
+
+.botao-salvar {
+    background-color: #666;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 5px;
+    margin-left: 150%;
+    margin-bottom: 2%;
+}
+
+.botao-salvar:hover {
+    background-color: #494949;
+}
+
+.id-perfil {
+    font-weight: bold;
+    font-size: 14px;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+/* Estilos para o modal */
+.modal {
+  display: none; /* Oculto por padrão */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #d6d6d6;
+  padding: 20px;
+  border-radius: 10px;
+  width: 600px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  text-align: left;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+textarea, input[type="text"] {
+  background-color: #bfbdbd;
+  width: 100%;
+  padding: 10px 0px 10px 0px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  resize: none;
+  outline: none;
+}
+
+.salvar-perfil{
+  border-radius: 8px;
+  padding: 5px 20px 5px 20px;
+  border: none;
+  background-color: #bfbdbd;
+  text-align: right;
+}
