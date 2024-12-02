@@ -4,6 +4,29 @@ include_once '../database/conexao.php';
 include_once '../login/validacao.php';
 include_once '../header/header.php';
 
+// comando sql para capturar os dados
+$sql = "SELECT
+        p.idpartidas,
+        p.data,
+        p.estadio,
+        p.idtimeCasa,
+        p.idtimeVis,
+        tc.nome As NomeTimeCasa,
+        tc.escudo AS EscudoTimeCasa,
+        tc.sigla AS SiglaTimeCasa,
+        tv.nome As NomeTimeVis,
+        tv.escudo AS EscudoTimeVis,
+        tv.sigla AS SiglaTimeVis
+        FROM partidas AS p
+        INNER JOIN times AS tc
+        ON p.idtimeCasa = tc.idtime
+        INNER JOIN times AS tv
+        ON p.idtimeVis = tv.idtime;";
+// executa o comando
+$result = mysqli_query( $conn, $sql );
+// transforma o resultado em dados
+$data = mysqli_fetch_assoc($result);
+
 ?>
 
 <div class="container-partida">
