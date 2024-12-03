@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03/12/2024 às 14:03
+-- Tempo de geração: 03/12/2024 às 14:13
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.0.30
 
@@ -44,7 +44,6 @@ CREATE TABLE `login` (
   `user` varchar(45) DEFAULT NULL,
   `senha` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
-  `foto` blob DEFAULT NULL,
   `nome` varchar(45) DEFAULT NULL,
   `avaliacao_idavaliacao` int(11) NOT NULL,
   `administrador` tinyint(4) DEFAULT NULL,
