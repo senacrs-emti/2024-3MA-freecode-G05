@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27/11/2024 às 13:04
+-- Tempo de geração: 03/12/2024 às 14:03
 -- Versão do servidor: 10.4.32-MariaDB
 -- Versão do PHP: 8.0.30
 
@@ -29,7 +29,6 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `avaliacao` (
   `idavaliacao` int(11) NOT NULL,
-  `nota` int(11) DEFAULT NULL,
   `comentario` longtext DEFAULT NULL,
   `idpartidas` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -64,34 +63,49 @@ CREATE TABLE `partidas` (
   `hora` varchar(10) DEFAULT NULL,
   `estadio` varchar(100) DEFAULT NULL,
   `idtimeCasa` varchar(50) NOT NULL DEFAULT '',
-  `idtimeVis` varchar(50) NOT NULL DEFAULT ''
+  `idtimeVis` varchar(50) NOT NULL DEFAULT '',
+  `header` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Despejando dados para a tabela `partidas`
 --
 
-INSERT INTO `partidas` (`idpartidas`, `data`, `hora`, `estadio`, `idtimeCasa`, `idtimeVis`) VALUES
-(1, '04/12/2024', NULL, 'Beira Rio', '2', '6'),
-(2, '04/12/2024', NULL, 'Mineirão', '10', '16'),
-(3, '04/12/2024', NULL, 'Barradão', '20', '1'),
-(4, '04/12/2024', NULL, 'Maracanã', '13', '11'),
-(5, '04/12/2024', NULL, 'São Januário', '19', '5'),
-(6, '04/12/2024', NULL, 'Neo Química Arena', '8', '12'),
-(7, '04/12/2024', NULL, 'Morumbis', '18', '15'),
-(8, '04/12/2024', NULL, 'Arena da Baixada', '7', '17'),
-(9, '04/12/2024', NULL, 'Antônio Accioly', '4', '14'),
-(10, '04/12/2024', NULL, 'Heriberto Hülse', '9', '3'),
-(11, '08/12/2024', NULL, 'Arena do Grêmio', '1', '8'),
-(12, '08/12/2024', NULL, 'Arena MRV', '5', '7'),
-(13, '08/12/2024', NULL, 'Arena Fonte Nova', '12', '4'),
-(14, '08/12/2024', NULL, 'Maracanã', '3', '20'),
-(15, '08/12/2024', NULL, 'Nilton Santos', '6', '18'),
-(16, '08/12/2024', NULL, 'Allianz Parque', '16', '13'),
-(17, '08/12/2024', NULL, 'Arena Red Bull', '17', '9'),
-(18, '08/12/2024', NULL, 'Arena Castelão', '14', '2'),
-(19, '08/12/2024', NULL, 'Arena Pantanal', '11', '19'),
-(20, '08/12/2024', NULL, 'Estádio Alfredo Jaconi', '15', '10');
+INSERT INTO `partidas` (`idpartidas`, `data`, `hora`, `estadio`, `idtimeCasa`, `idtimeVis`, `header`) VALUES
+(1, '', NULL, '', '', '', ''),
+(2, '', NULL, '', '', '', ''),
+(3, '', NULL, '', '', '', ''),
+(4, '', NULL, '', '', '', ''),
+(5, '', NULL, '', '', '', ''),
+(6, '', NULL, '', '', '', ''),
+(7, '', NULL, '', '', '', ''),
+(8, '', NULL, '', '', '', ''),
+(9, '', NULL, '', '', '', ''),
+(10, '', NULL, '', '', '', ''),
+(11, '08/12/2024', '16:00', 'Arena do Grêmio', '1', '8', 'grecor.jpg'),
+(12, '08/12/2024', '16:00', 'Arena MRV', '5', '7', 'camcap.jpg'),
+(13, '08/12/2024', '16:00', 'Arena Fonte Nova', '12', '4', 'bahacg.jpg'),
+(14, '08/12/2024', '16:00', 'Maracanã', '3', '20', 'flavit.jpg'),
+(15, '08/12/2024', '16:00', 'Nilton Santos', '6', '18', 'botsao.jpg'),
+(16, '08/12/2024', '16:00', 'Allianz Parque', '16', '13', 'palflu.jpg'),
+(17, '08/12/2024', '16:00', 'Arena Red Bull', '17', '9', 'bgccri.jpg'),
+(18, '08/12/2024', '16:00', 'Arena Castelão', '14', '2', 'fortint.jpg'),
+(19, '08/12/2024', '16:00', 'Arena Pantanal', '11', '19', 'cuivas.jpg'),
+(20, '08/12/2024', '16:00', 'Estádio Alfredo Jaconi', '15', '10', 'juvcru.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `perfil`
+--
+
+CREATE TABLE `perfil` (
+  `idperfil` int(11) NOT NULL,
+  `iduser` int(11) NOT NULL DEFAULT 0,
+  `idfoto` int(11) NOT NULL DEFAULT 0,
+  `descricao` longtext DEFAULT NULL,
+  `capa` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -158,6 +172,12 @@ ALTER TABLE `partidas`
   ADD PRIMARY KEY (`idpartidas`);
 
 --
+-- Índices de tabela `perfil`
+--
+ALTER TABLE `perfil`
+  ADD PRIMARY KEY (`idperfil`);
+
+--
 -- Índices de tabela `times`
 --
 ALTER TABLE `times`
@@ -184,6 +204,12 @@ ALTER TABLE `login`
 --
 ALTER TABLE `partidas`
   MODIFY `idpartidas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT de tabela `perfil`
+--
+ALTER TABLE `perfil`
+  MODIFY `idperfil` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `times`
