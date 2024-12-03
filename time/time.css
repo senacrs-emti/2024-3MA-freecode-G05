@@ -42,10 +42,10 @@ header {
     margin-top: 60px;
     margin-left: 30px;
 }
-.barra {
+.barra-time{
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column; 
+    align-items: center; 
     text-align: center;
     background-color: black;
     color: white;
@@ -53,13 +53,13 @@ header {
     border-radius: 8px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     width: 500px;
-    margin-top: 50px;
-    margin-left: 385px;
+    margin-top: 50px; 
+    margin-left: 33%;
 }
 
-h2 {
+#prox-partidas {
     margin-top: 15px;
-    margin-left: 530px; 
+    margin-left: 44%; 
 }
 
 .times-container {
@@ -76,7 +76,7 @@ h2 {
     height: 70px;
 }
 
-.barra .info {
+/* .barra-time .info {
     margin-top: 15px;
     font-size: 12px; 
     color: white;
@@ -85,7 +85,7 @@ h2 {
     display: flex;
     gap: 40px;
     margin-left: 35px;
-}
+} */
  
 .times {
     width: 50px;

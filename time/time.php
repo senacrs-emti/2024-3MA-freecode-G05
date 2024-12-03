@@ -66,10 +66,10 @@ if ($idTime > 0) {
         <img src="../img/mascotes/<?php echo $time['MascoteTime']; ?>" alt="Mascote <?php echo $time['NomeTime']; ?>">
     </header>
     <div class="partidas">
-    <h2>Próximas Partidas</h2>
+    <h2 id="prox-partidas">Próximas Partidas</h2>
     <?php if ($resultPartidas && mysqli_num_rows($resultPartidas) > 0): ?>
         <?php while ($partida = mysqli_fetch_assoc($resultPartidas)): ?>
-            <div class="barra">
+            <div class="barra-time">
                 <div class="times-container">
                     <img class="times" src="../img/times/<?php echo $time['EscudoTime']; ?>" alt="Escudo <?php echo $time['NomeTime']; ?>">
                     <p><?php echo strtoupper(substr($time['NomeTime'], 0, 3)); ?></p>

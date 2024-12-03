@@ -76,8 +76,9 @@ $result_times = $conn->query($sql_times);
         <label for="username">Nome de Usuário:</label>
         <input type="text" id="username" value="<?php echo htmlspecialchars($usuario['user']); ?>">
 
-        <label for="description">Descrição:</label>
-        <textarea id="description"></textarea>
+        <label for="descriptionPerfil">Descrição:</label>
+        <textarea id="descriptionPerfil"></textarea>
+
 
         <label for="time">Qual o seu time?</label> <br>
         <select name="time">

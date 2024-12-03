@@ -38,6 +38,7 @@ section {
 
 .barra:hover {
     background-color: #f0f0f0;
+    color: black;
 }
 
 a.barra {
@@ -63,9 +64,19 @@ a.barra {
     gap: 5px;
 }
 
+.time-logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.info-topo{
+    margin-left: 30%;
+}
+
 .topo, .time-item {
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr 1fr 1fr 1fr 1fr;
     align-items: center;
     padding: 8px 0;
 }

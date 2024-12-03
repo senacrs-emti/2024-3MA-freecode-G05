@@ -1,21 +1,30 @@
 function mostrarInputComentario() {
     const container = document.getElementById("comentariosContainer");
+
+    // Criar elementos
     const input = document.createElement("textarea");
     input.placeholder = "Digite seu comentário...";
+    input.classList.add("textarea-comentario");
+
     const button = document.createElement("button");
     button.textContent = "Enviar";
+    button.classList.add("botao-enviar");
+
+    // Evento de clique no botão
     button.onclick = () => {
         const conteudo = input.value;
         fetch("adicionar_comentario.php", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: `id_usuario=1&conteudo=${encodeURIComponent(conteudo)}`
+            body: `id_usuario=1&conteudo=${encodeURIComponent(conteudo)}` // Substituir por ID dinâmico
         }).then(response => {
             if (response.ok) {
                 location.reload();
             }
         });
     };
+
+    // Adicionar ao container
     container.appendChild(input);
     container.appendChild(button);
 }
@@ -23,6 +32,7 @@ function mostrarInputComentario() {
 function salvarComentario(conteudoComentario, texto) {
     const textarea = conteudoComentario.querySelector('.textarea-comentario');
     const botaoSalvar = conteudoComentario.querySelector('button');
+    
     conteudoComentario.removeChild(textarea);
     conteudoComentario.removeChild(botaoSalvar);
 
@@ -35,19 +45,17 @@ function salvarComentario(conteudoComentario, texto) {
 
 function abrirModal() {
     const modal = document.getElementById('editModal');
-    modal.style.display = 'flex'; // Torna o modal visível
+    modal.style.display = 'flex'; // Exibir o modal
 }
 
-// Fecha o modal ao clicar no botão ou fora do conteúdo
 function fecharModal() {
     const modal = document.getElementById('editModal');
-    modal.style.display = 'none';
+    modal.style.display = 'none'; // Ocultar o modal
 }
 
-// Salva as alterações do perfil
 function salvarEdicao() {
     const nomeUsuario = document.getElementById("username").value;
-    const descricao = document.getElementById("description").value;
+    const descricao = document.getElementById("descriptionPerfil").value; // Alterado para o ID correto
     const time = document.querySelector("select[name='time']").value;
 
     const formData = new FormData();
@@ -66,13 +74,10 @@ function salvarEdicao() {
     });
 }
 
-
-// Fecha o modal ao clicar fora do conteúdo
 window.addEventListener('click', function (event) {
     const modal = document.getElementById('editModal');
-    const modalContent = modal.querySelector('.modal-content');
 
-    // Se o clique não foi no conteúdo do modal e o modal está aberto
+    // Fechar o modal ao clicar fora do conteúdo
     if (event.target === modal) {
         fecharModal();
     }
