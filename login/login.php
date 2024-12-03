@@ -7,31 +7,81 @@ $errorMessage = "";
 $successMessage = ""; 
 
 $user = $name = $email = $password = "";
+$isLogin = true;  // Flag para determinar se o formulário é de login ou cadastro
 
 if (isset($_POST['submit'])) {
-    $user = $_POST['usuario'];
-    $name = $_POST['nome'];
-    $email = $_POST['email'];
-    $password = $_POST['senha'];
+    if (isset($_POST['usuario']) && isset($_POST['senha'])) {
+        // Processo de Login
+        $user = $_POST['usuario'];
+        $password = $_POST['senha'];
 
-    $checkQuery = "SELECT * FROM login WHERE user = '$user' OR email = '$email'";
-    $checkResult = mysqli_query($conn, $checkQuery);
+        // Consultar o banco de dados para verificar se o usuário existe
+        $checkQuery = "SELECT l.idlogin, l.user, l.senha, l.nome, p.idfoto, p.descricao, p.capa
+                       FROM login l
+                       JOIN perfil p ON l.idlogin = p.iduser
+                       WHERE l.user = ?";
+        $stmt = $conn->prepare($checkQuery);
+        $stmt->bind_param("s", $user);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-    if (mysqli_num_rows($checkResult) > 0) {
-        $errorMessage = "Email '$email' e/ou Usuário '$user' já está cadastrado!";
-    } else {
-        $query = "INSERT INTO avaliacao(nota, comentario) VALUES (NULL, NULL)";
-        mysqli_query($conn, $query);
-        $avaliacao_id = mysqli_insert_id($conn);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            // Verificar se a senha está correta
+            if (password_verify($password, $row['senha'])) {
+                // Iniciar sessão e salvar as variáveis de sessão
+                session_start();
+                $_SESSION['idlogin'] = $row['idlogin'];
+                $_SESSION['nome'] = $row['nome'];
+                $_SESSION['foto'] = $row['idfoto'];
+                $_SESSION['descricao'] = $row['descricao'];
+                $_SESSION['capa'] = $row['capa'];
 
-        $result = mysqli_query($conn, "INSERT INTO login(user, nome, email, senha, avaliacao_idavaliacao) 
-                                       VALUES ('$user', '$name', '$email', '$password', '$avaliacao_id')");
-
-        if ($result) {
-            $successMessage = "Conta criada com sucesso!";
-            $user = $name = $email = $password = ""; 
+                // Redirecionar para a página de perfil
+                header("Location: perfil.php");
+                exit;
+            } else {
+                $errorMessage = "Senha incorreta!";
+            }
         } else {
-            $errorMessage = "Erro ao criar conta. Tente novamente.";
+            $errorMessage = "Usuário não encontrado!";
+        }
+    } elseif (isset($_POST['email']) && isset($_POST['nome']) && isset($_POST['usuario'])) {
+        // Processo de Cadastro
+        $user = $_POST['usuario'];
+        $name = $_POST['nome'];
+        $email = $_POST['email'];
+        $password = password_hash($_POST['senha'], PASSWORD_DEFAULT); // Criptografar a senha
+
+        // Verificar se o usuário ou email já existe
+        $checkQuery = "SELECT * FROM login WHERE user = '$user' OR email = '$email'";
+        $checkResult = mysqli_query($conn, $checkQuery);
+
+        if (mysqli_num_rows($checkResult) > 0) {
+            $errorMessage = "Email '$email' ou Usuário '$user' já está cadastrado!";
+        } else {
+            // Inserir a avaliação inicial (comentário vazio)
+            $query = "INSERT INTO avaliacao(comentario) VALUES (NULL)";
+            mysqli_query($conn, $query);
+            $avaliacao_id = mysqli_insert_id($conn);
+
+            // Inserir o novo usuário na tabela de login
+            $query = "INSERT INTO login(user, nome, email, senha, avaliacao_idavaliacao) 
+                      VALUES ('$user', '$name', '$email', '$password', '$avaliacao_id')";
+            $result = mysqli_query($conn, $query);
+
+            if ($result) {
+                // Criar o perfil do usuário (perfil básico)
+                $idlogin = mysqli_insert_id($conn); // id do novo usuário
+                $perfilQuery = "INSERT INTO perfil(iduser) VALUES ('$idlogin')";
+                mysqli_query($conn, $perfilQuery);
+
+                $successMessage = "Conta criada com sucesso! Faça login para acessar.";
+                $user = $name = $email = $password = "";  // Limpar campos após cadastro
+                $isLogin = true;  // Redefinir o formulário para login
+            } else {
+                $errorMessage = "Erro ao criar conta. Tente novamente.";
+            }
         }
     }
 }

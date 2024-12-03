@@ -7,7 +7,10 @@ include_once '../database/conexao.php';
 $id_usuario = 1; 
 
 // Obter dados do usuário
-$sql_usuario = "SELECT nome, foto, user, avaliacao_idavaliacao FROM login WHERE idlogin = ?";
+$sql_usuario = "SELECT l.nome, l.user, l.avaliacao_idavaliacao, p.idfoto, p.descricao, p.capa 
+                FROM login l 
+                JOIN perfil p ON l.idlogin = p.iduser 
+                WHERE l.idlogin = ?";
 $stmt_usuario = $conn->prepare($sql_usuario);
 $stmt_usuario->bind_param("i", $id_usuario);
 $stmt_usuario->execute();
@@ -15,33 +18,37 @@ $result_usuario = $stmt_usuario->get_result();
 $usuario = $result_usuario->fetch_assoc();
 
 if (!$usuario) {
-  echo "Usuário não encontrado.";
-  exit;
+    echo "Usuário não encontrado.";
+    exit;
 }
 
 // Obter comentários do usuário
-$sql_comentarios = "SELECT comentario, datacriacao FROM avaliacao WHERE idlogin = ? ORDER BY datacriacao DESC";
+$sql_comentarios = "SELECT a.comentario, a.datacriacao FROM avaliacao a 
+                    JOIN login l ON a.idlogin = l.idlogin 
+                    WHERE l.idlogin = ? ORDER BY a.datacriacao DESC";
 $stmt_comentarios = $conn->prepare($sql_comentarios);
 $stmt_comentarios->bind_param("i", $id_usuario);
 $stmt_comentarios->execute();
 $result_comentarios = $stmt_comentarios->get_result();
 
+// Obter os times disponíveis
 $sql_times = "SELECT idtime, nome FROM times ORDER BY nome ASC";
 $result_times = $conn->query($sql_times);
 ?>
 
 <div class="body-perfil">
   <div class="header-perfil">
-    <img src="../img/gremio capa.jpeg" alt="Imagem de Fundo">
+    <img src="../img/<?php echo htmlspecialchars($usuario['capa']); ?>" alt="Imagem de Fundo">
   </div>
 
   <div class="profile-picture">
-    <img src="../img/<?php echo htmlspecialchars($usuario['foto']); ?>" alt="Foto de Perfil">
+    <img src="../img/<?php echo $usuario['foto']; ?>" alt="Foto de Perfil">
+
   </div>
 
   <div class="profile-info">
     <h1><?php echo htmlspecialchars($usuario['user']); ?></h1>
-    <p></p>
+    <p><?php echo htmlspecialchars($usuario['descricao']); ?></p>
   </div>
 
   <button class="edit-button" onclick="abrirModal()">Editar Perfil</button>
@@ -49,22 +56,18 @@ $result_times = $conn->query($sql_times);
   <div class="posts">
     <?php while ($comentario = $result_comentarios->fetch_assoc()): ?>
     <div class="post">
-      <img src="../img/<?php echo $usuario['foto_perfil']; ?>" alt="Foto de Perfil">
+      <img src="../img/<?php echo $usuario['foto']; ?>" alt="Foto de Perfil">
       <div class="post-content">
         <h2><?php echo htmlspecialchars($usuario['nome']); ?></h2>
         <p><?php echo htmlspecialchars($comentario['comentario']); ?></p>
         <small><?php echo date("d/m/Y H:i", strtotime($comentario['datacriacao'])); ?></small>
       </div>
     </div>
-    <?php endwhile; ?> <!-- Fechamento do loop -->
+    <?php endwhile; ?>
   </div>
 
-  <!-- Container para os comentários -->
-  <div class="comentarios-container" id="comentariosContainer">
-    <!-- Novos comentários aparecerão aqui -->
-  </div>
+  <div class="comentarios-container" id="comentariosContainer"></div>
 
-  <!-- Botão para adicionar um novo comentário -->
   <button class="add-comentario-btn" onclick="mostrarInputComentario()">+</button>
 
   <!-- Modal para editar o perfil -->
@@ -77,16 +80,16 @@ $result_times = $conn->query($sql_times);
         <input type="text" id="username" value="<?php echo htmlspecialchars($usuario['user']); ?>">
 
         <label for="descriptionPerfil">Descrição:</label>
-        <textarea id="descriptionPerfil"></textarea>
-
+        <textarea id="descriptionPerfil"><?php echo htmlspecialchars($usuario['descricao']); ?></textarea>
 
         <label for="time">Qual o seu time?</label> <br>
-        <select name="time">
+        <select name="time" id="time">
           <option value="">Escolha o time que você torce</option>
           <?php
             if ($result_times->num_rows > 0) {
               while ($time = $result_times->fetch_assoc()) {
-                echo '<option value="' . htmlspecialchars($time['idtime']) . '">' . htmlspecialchars($time['nome']) . '</option>';
+                $selected = ($usuario['idtime'] == $time['idtime']) ? 'selected' : '';
+                echo '<option value="' . htmlspecialchars($time['idtime']) . '" ' . $selected . '>' . htmlspecialchars($time['nome']) . '</option>';
               }
             } else {
               echo '<option value="">Nenhum time disponível</option>';
