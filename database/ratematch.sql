@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27/11/2024 às 13:04
--- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.0.30
+-- Tempo de geração: 03-Dez-2024 às 01:45
+-- Versão do servidor: 10.4.25-MariaDB
+-- versão do PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,40 +24,46 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `avaliacao`
+-- Estrutura da tabela `avaliacao`
 --
 
 CREATE TABLE `avaliacao` (
   `idavaliacao` int(11) NOT NULL,
   `nota` int(11) DEFAULT NULL,
   `comentario` longtext DEFAULT NULL,
-  `idpartidas` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `idpartidas` int(11) NOT NULL DEFAULT 0,
+  `datacriacao` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `login`
+-- Estrutura da tabela `login`
 --
 
 CREATE TABLE `login` (
-  `idlogin` int(11) NOT NULL AUTO_INCREMENT,
-  `user` varchar(45) NOT NULL UNIQUE,
+  `idlogin` int(11) NOT NULL AUTO_INCREMENT, 
+  `user` varchar(45) NOT NULL,
   `senha` varchar(45) DEFAULT NULL,
-  `email` varchar(45) NOT NULL UNIQUE,
+  `email` varchar(45) NOT NULL,
   `foto` blob DEFAULT NULL,
   `nome` varchar(45) DEFAULT NULL,
   `avaliacao_idavaliacao` int(11) NOT NULL,
   `administrador` tinyint(4) DEFAULT NULL,
-  `usuario` tinyint(4) DEFAULT NULL,
-  PRIMARY KEY (`idlogin`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `usuario` tinyint(4) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Extraindo dados da tabela `login`
+--
+
+INSERT INTO `login` (`idlogin`, `user`, `senha`, `email`, `foto`, `nome`, `avaliacao_idavaliacao`, `administrador`, `usuario`) VALUES
+(1, '_viniross', '112345', 'viniciusrossw@gmail.com', NULL, 'Vini', 3, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `partidas`
+-- Estrutura da tabela `partidas`
 --
 
 CREATE TABLE `partidas` (
@@ -67,10 +73,10 @@ CREATE TABLE `partidas` (
   `estadio` varchar(100) DEFAULT NULL,
   `idtimeCasa` varchar(50) NOT NULL DEFAULT '',
   `idtimeVis` varchar(50) NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Despejando dados para a tabela `partidas`
+-- Extraindo dados da tabela `partidas`
 --
 
 INSERT INTO `partidas` (`idpartidas`, `data`, `hora`, `estadio`, `idtimeCasa`, `idtimeVis`) VALUES
@@ -98,7 +104,7 @@ INSERT INTO `partidas` (`idpartidas`, `data`, `hora`, `estadio`, `idtimeCasa`, `
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `times`
+-- Estrutura da tabela `times`
 --
 
 CREATE TABLE `times` (
@@ -108,65 +114,66 @@ CREATE TABLE `times` (
   `sigla` varchar(5) DEFAULT NULL,
   `estadio` varchar(100) DEFAULT NULL,
   `mascote` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Despejando dados para a tabela `times`
+-- Extraindo dados da tabela `times`
 --
 
 INSERT INTO `times` (`idtime`, `nome`, `escudo`, `sigla`, `estadio`, `mascote`) VALUES
-(1, 'Grêmio', 'gremio.png', 'GRE', 'gremio.png', 'gremio.png'),
-(2, 'Internacional', 'internacional.png', 'INT', 'internacional.png', 'internacional.png'),
-(3, 'Flamengo', 'flamengo.png', 'FLA', 'flamengo.png', 'flamengo.png'),
-(4, 'Atlético GO', 'atleticogo.png', 'ACG', 'atleticogo.png', 'atleticogo.png'),
-(5, 'Atlético MG', 'atleticomg.png', 'CAM', 'atleticomg.png', 'atleticomg.png'),
-(6, 'Botafogo', 'botafogo.png', 'BOT', 'botafogo.png', 'botafogo.png'),
-(7, 'Athletico PR', 'athleticopr.png', 'CAP', 'athleticopr.png', 'athleticopr.png'),
-(8, 'Corinthians', 'corinthians.png', 'COR', 'corinthians.png', 'corinthians.png'),
-(9, 'Criciúma', 'criciuma.png', 'CRI', 'criciuma.png', 'criciuma.png'),
-(10, 'Cruzeiro', 'cruzeiro.png', 'CRU', 'cruzeiro.png', 'cruzeiro.png'),
-(11, 'Cuiaba', 'cuiaba.png', 'CUI', 'cuiaba.png', 'cuiaba.png'),
-(12, 'Bahia', 'bahia.png', 'BAH', 'bahia.png', 'bahia.png'),
-(13, 'Fluminense', 'fluminense.png', 'FLU', 'fluminense.png', 'fluminense.png'),
-(14, 'Fortaleza', 'fortaleza.png', 'FOR', 'fortaleza.png', 'fortaleza.png'),
-(15, 'Juventude', 'juventude.png', 'JUV', 'juventude.png', 'juventude.png'),
-(16, 'Palmeiras', 'palmeiras.png', 'PAL', 'palmeiras.png', 'palmeiras.png'),
-(17, 'Bragantino', 'bragantino.png', 'RBG', 'bragantino.png', 'bragantino.png'),
-(18, 'São Paulo', 'saopaulo.png', 'SAO', 'saopaulo.png', 'saopaulo.png'),
-(19, 'Vasco', 'vasco.png', 'VAS', 'vasco.png', 'vasco.png'),
-(20, 'Vitória', 'vitoria.png', 'VIT', 'vitoria.png', 'vitoria.png');
+(1, 'Grêmio', 'gremio.jpg', 'GRE', 'gremio.jpg', 'gremio.jpg'),
+(2, 'Internacional', 'internacional.jpg', 'INT', 'internacional.jpg', 'internacional.jpg'),
+(3, 'Flamengo', 'flamengo.jpg', 'FLA', 'flamengo.jpg', 'flamengo.jpg'),
+(4, 'Atlético GO', 'atletico-go.jpg', 'ACG', 'atletico-go.jpg', 'atletico-go.jpg'),
+(5, 'Atlético MG', 'atletico-mg.jpg', 'CAM', 'atletico-mg.jpg', 'atletico-mg.jpg'),
+(6, 'Botafogo', 'botafogo.jpg', 'BOT', 'botafogo.jpg', 'botafogo.jpg'),
+(7, 'Athletico PR', 'athletico-pr.jpg', 'CAP', 'athletico-pr.jpg', 'athletico-pr.jpg'),
+(8, 'Corinthians', 'corinthians.jpg', 'COR', 'corinthians.jpg', 'corinthians.jpg'),
+(9, 'Criciúma', 'criciuma.jpg', 'CRI', 'criciuma.jpg', 'criciuma.jpg'),
+(10, 'Cruzeiro', 'cruzeiro.jpg', 'CRU', 'cruzeiro.jpg', 'cruzeiro.jpg'),
+(11, 'Cuiaba', 'cuiaba.jpg', 'CUI', 'cuiaba.jpg', 'cuiaba.jpg'),
+(12, 'Bahia', 'bahia.jpg', 'BAH', 'bahia.jpg', 'bahia.jpg'),
+(13, 'Fluminense', 'fluminense.jpg', 'FLU', 'fluminense.jpg', 'fluminense.jpg'),
+(14, 'Fortaleza', 'fortaleza.jpg', 'FOR', 'fortaleza.jpg', 'fortaleza.jpg'),
+(15, 'Juventude', 'juventude.jpg', 'JUV', 'juventude.jpg', 'juventude.jpg'),
+(16, 'Palmeiras', 'palmeiras.jpg', 'PAL', 'palmeiras.jpg', 'palmeiras.jpg'),
+(17, 'Bragantino', 'bragantino.jpg', 'RBG', 'bragantino.jpg', 'bragantino.jpg'),
+(18, 'São Paulo', 'saopaulo.jpg', 'SAO', 'saopaulo.jpg', 'saopaulo.jpg'),
+(19, 'Vasco', 'vasco.jpg', 'VAS', 'vasco.jpg', 'vasco.jpg'),
+(20, 'Vitória', 'vitoria.jpg', 'VIT', 'vitoria.jpg', 'vitoria.jpg');
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices de tabela `avaliacao`
+-- Índices para tabela `avaliacao`
 --
 ALTER TABLE `avaliacao`
   ADD PRIMARY KEY (`idavaliacao`);
 
 --
--- Índices de tabela `login`
+-- Índices para tabela `login`
 --
 ALTER TABLE `login`
   ADD PRIMARY KEY (`idlogin`),
-  ADD KEY `fk_login_avaliacao1_idx` (`avaliacao_idavaliacao`);
+  ADD UNIQUE KEY `user` (`user`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
--- Índices de tabela `partidas`
+-- Índices para tabela `partidas`
 --
 ALTER TABLE `partidas`
   ADD PRIMARY KEY (`idpartidas`);
 
 --
--- Índices de tabela `times`
+-- Índices para tabela `times`
 --
 ALTER TABLE `times`
   ADD PRIMARY KEY (`idtime`);
 
 --
--- AUTO_INCREMENT para tabelas despejadas
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
@@ -179,7 +186,7 @@ ALTER TABLE `avaliacao`
 -- AUTO_INCREMENT de tabela `login`
 --
 ALTER TABLE `login`
-  MODIFY `idlogin` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idlogin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `partidas`
@@ -192,16 +199,6 @@ ALTER TABLE `partidas`
 --
 ALTER TABLE `times`
   MODIFY `idtime` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- Restrições para tabelas despejadas
---
-
---
--- Restrições para tabelas `login`
---
-ALTER TABLE `login`
-  ADD CONSTRAINT `fk_login_avaliacao1` FOREIGN KEY (`avaliacao_idavaliacao`) REFERENCES `avaliacao` (`idavaliacao`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
