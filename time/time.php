@@ -33,6 +33,7 @@ if ($idTime > 0) {
     $sqlPartidas = "
         SELECT 
             p.data,
+            p.hora,
             p.estadio,
             CASE 
                 WHEN p.idtimeCasa = $idTime THEN p.idtimeVis
@@ -80,7 +81,7 @@ if ($idTime > 0) {
                 <div class="info">
                     <p>Local: <?php echo $partida['estadio']; ?></p>
                     <p>Data: <?php echo date('d/m/Y', strtotime($partida['data'])); ?></p>
-                    <p>Horário: <?php echo $partida['horario']; ?></p>
+                    <p>Horário: <?php echo $partida['hora']; ?></p>
                 </div>
             </div>
         <?php endwhile; ?>
