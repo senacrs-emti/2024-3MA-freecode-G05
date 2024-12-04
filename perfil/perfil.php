@@ -5,17 +5,60 @@ include_once '../database/conexao.php';
 include_once '../login/validacao.php';
 
 // Obter comentários do usuário
-$sql_comentarios = "SELECT a.comentario, a.datacriacao FROM avaliacao a 
-                    JOIN login l ON a.idlogin = l.idlogin 
-                    WHERE l.idlogin = :i";
+$sql_comentarios = "SELECT
+                      a.idavaliacao,
+                      a.comentario
+                    FROM avaliacao AS a
+                    INNER JOIN login AS l
+                    ON a.idlogin = l.idlogin
+                    INNER JOIN perfil AS p
+                    ON a.idperfil = p.idperfil
+                    WHERE a.idlogin = ?
+                    AND a.idperfil = ?";
 $stmt_comentarios = $conn->prepare($sql_comentarios);
-$stmt_comentarios->bind_param("i", $id_usuario);
+
+$sql_user = "SELECT 
+              l.user AS nome_usuario, p.descricao AS descricao_perfil
+            FROM login l
+            INNER JOIN perfil p
+            ON l.idlogin = p.iduser
+            WHERE l.idlogin = ?;";
+
+$stmt_user = $conn->prepare($sql_user);
+if ($stmt_user) {
+    $stmt_user->bind_param("i", $id_usuario);
+    $stmt_user->execute();
+    $result_user = $stmt_user->get_result();
+    
+    if ($result_user->num_rows > 0) {
+        while ($row = $result_user->fetch_assoc()) {
+            echo "Nome de Usuário: " . htmlspecialchars($row['nome_usuario']) . "<br>";
+            echo "Descrição: " . htmlspecialchars($row['descricao_perfil']) . "<br>";
+        }
+    } else {
+        echo "Nenhum usuário encontrado.";
+    }
+    $stmt_user->close();
+} else {
+    echo "Erro na consulta: " . $conn->error;
+}
+
+if (!$stmt_comentarios) {
+  die("Erro ao preparar a consulta de comentários: " . $conn->error);
+}
+
+$stmt_comentarios->bind_param("ii", $id_usuario, $id_perfil);
 $stmt_comentarios->execute();
 $result_comentarios = $stmt_comentarios->get_result();
 
 // Obter os times disponíveis
 $sql_times = "SELECT idtime, nome FROM times ORDER BY nome ASC";
 $result_times = $conn->query($sql_times);
+
+if (!$result_times) {
+  die("Erro ao obter times: " . $conn->error);
+}
+
 ?>
 
 <div class="body-perfil">
@@ -24,8 +67,7 @@ $result_times = $conn->query($sql_times);
   </div>
 
   <div class="profile-picture">
-    <img src="../img/<?php echo $usuario['foto']; ?>" alt="Foto de Perfil">
-
+  <img src="../img/<?php echo htmlspecialchars($usuario['foto']); ?>" alt="Foto de Perfil"> 
   </div>
 
   <div class="profile-info">
