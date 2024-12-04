@@ -2,30 +2,12 @@
 include_once '../configuracao.php';
 include_once '../header/header.php'; 
 include_once '../database/conexao.php';
-
-// Pegar o ID do usuário logado (substituir por sessão ou método apropriado)
-$id_usuario = 1; 
-
-// Obter dados do usuário
-$sql_usuario = "SELECT l.nome, l.user, l.avaliacao_idavaliacao, p.idfoto, p.descricao, p.capa 
-                FROM login l 
-                JOIN perfil p ON l.idlogin = p.iduser 
-                WHERE l.idlogin = ?";
-$stmt_usuario = $conn->prepare($sql_usuario);
-$stmt_usuario->bind_param("i", $id_usuario);
-$stmt_usuario->execute();
-$result_usuario = $stmt_usuario->get_result();
-$usuario = $result_usuario->fetch_assoc();
-
-if (!$usuario) {
-    echo "Usuário não encontrado.";
-    exit;
-}
+include_once '../login/validacao.php';
 
 // Obter comentários do usuário
 $sql_comentarios = "SELECT a.comentario, a.datacriacao FROM avaliacao a 
                     JOIN login l ON a.idlogin = l.idlogin 
-                    WHERE l.idlogin = ? ORDER BY a.datacriacao DESC";
+                    WHERE l.idlogin = :i";
 $stmt_comentarios = $conn->prepare($sql_comentarios);
 $stmt_comentarios->bind_param("i", $id_usuario);
 $stmt_comentarios->execute();

@@ -9,8 +9,9 @@ $successMessage = "";
 $user = $name = $email = $password = "";
 $isLogin = true;  // Flag para determinar se o formulário é de login ou cadastro
 
-if (isset($_POST['submit'])) {
-    if (isset($_POST['usuario']) && isset($_POST['senha'])) {
+if (isset($_POST['acao'])) {
+    
+    if ( $_POST['acao'] == "login") {
         // Processo de Login
         $user = $_POST['usuario'];
         $password = $_POST['senha'];
@@ -20,6 +21,7 @@ if (isset($_POST['submit'])) {
                        FROM login l
                        JOIN perfil p ON l.idlogin = p.iduser
                        WHERE l.user = ?";
+
         $stmt = $conn->prepare($checkQuery);
         $stmt->bind_param("s", $user);
         $stmt->execute();
@@ -28,17 +30,19 @@ if (isset($_POST['submit'])) {
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             // Verificar se a senha está correta
-            if (password_verify($password, $row['senha'])) {
+            if ( md5($password) == $row['senha'] ) {
                 // Iniciar sessão e salvar as variáveis de sessão
                 session_start();
                 $_SESSION['idlogin'] = $row['idlogin'];
                 $_SESSION['nome'] = $row['nome'];
+                $_SESSION['usuario'] = $row['usuario'];
+                $_SESSION['senha'] = $row['senha'];
                 $_SESSION['foto'] = $row['idfoto'];
                 $_SESSION['descricao'] = $row['descricao'];
                 $_SESSION['capa'] = $row['capa'];
 
                 // Redirecionar para a página de perfil
-                header("Location: perfil.php");
+                header("Location: ../main/index.php");
                 exit;
             } else {
                 $errorMessage = "Senha incorreta!";
@@ -46,12 +50,12 @@ if (isset($_POST['submit'])) {
         } else {
             $errorMessage = "Usuário não encontrado!";
         }
-    } elseif (isset($_POST['email']) && isset($_POST['nome']) && isset($_POST['usuario'])) {
+    } elseif (isset($_POST['acao']) == "cadastro") {
         // Processo de Cadastro
         $user = $_POST['usuario'];
         $name = $_POST['nome'];
         $email = $_POST['email'];
-        $password = password_hash($_POST['senha'], PASSWORD_DEFAULT); // Criptografar a senha
+        $password = md5($_POST['senha']); // Criptografar a senha
 
         // Verificar se o usuário ou email já existe
         $checkQuery = "SELECT * FROM login WHERE user = '$user' OR email = '$email'";
@@ -111,7 +115,8 @@ if (isset($_POST['submit'])) {
 
                 <div class="login">
                     <h2 class="title">Login</h2>
-                    <form action="testelogin.php" method="post" class="fLogin">
+                    <form action="login.php" method="post" class="fLogin">
+                        <input type="hidden" name="acao" value="login">
                         <label for="flUsuario">Usuário:</label>
                         <input type="text" name="usuario" placeholder="Digite seu Usuário" required>
                         <label for="flSenha">Senha:</label>
@@ -136,6 +141,7 @@ if (isset($_POST['submit'])) {
                 <div class="cadastro">
                     <h2 class="title">Cadastre-se</h2>
                         <form action="login.php" method="post" class="fCadastro">
+                        <input type="hidden" name="acao" value="cadastro">
                             <label for="fcEmail">Email:</label>
                             <input type="email" name="email" placeholder="Digite seu Email" value="<?php echo htmlspecialchars($email); ?>" required>
                             <label for="fcNome">Nome:</label>
