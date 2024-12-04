@@ -1,5 +1,6 @@
 <?php
 include_once '../configuracao.php';
+$pagina = 'perfil';
 include_once '../header/header.php'; 
 include_once '../database/conexao.php';
 include_once '../login/validacao.php';

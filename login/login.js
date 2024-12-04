@@ -25,8 +25,10 @@ setupPasswordToggle('passwordCadastro', 'togglePasswordCadastro', 'iconToggleCad
 const btnCadastro = document.getElementById('btnCadastro');
 const btnLogin = document.getElementById('btnLogin');
 
-let footer = document.querySelector('.footer');
-footer = '5%!important;';
+const footer = document.getElementsByTagName('footer');
+footer.style.marginTop = '5%!important;';
+footer.setAttribute("style",'margin-top:5%!important');
+console.log(footer);
 
 const contentLogin = document.querySelector('.contentLogin');
 const contentCadastro = document.querySelector('.contentCadastro');

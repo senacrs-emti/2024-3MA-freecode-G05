@@ -1,6 +1,7 @@
 <?php
 include_once '../database/conexao.php';
 include_once '../configuracao.php'; 
+$pagina = 'index';
 include_once '../header/header.php'; 
 
 //TEM Q FAZER INNER JOIN

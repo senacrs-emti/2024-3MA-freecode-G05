@@ -1,5 +1,6 @@
 <?php
 include_once '../configuracao.php';
+$pagina = 'login';
 include_once '../header/header.php'; 
 include_once '../database/conexao.php';
 
@@ -107,31 +108,35 @@ if (isset($_POST['acao'])) {
             </script>
         <?php endif; ?>
 
-            <div class="contentLogin">
-
-                <div class="villa">
-                    <img src="../img/villa.png" alt="Foto Villasanti, jogador do Grêmio">
-                </div>
-
-                <div class="login">
-                    <h2 class="title">Login</h2>
-                    <form action="login.php" method="post" class="fLogin">
-                        <input type="hidden" name="acao" value="login">
-                        <label for="flUsuario">Usuário:</label>
-                        <input type="text" name="usuario" placeholder="Digite seu Usuário" required>
-                        <label for="flSenha">Senha:</label>
-                        <div style="position: relative;">
-                            <input type="password" id="passwordLogin" name="senha" placeholder="Digite sua Senha" required>
-                            <button type="button" id="togglePasswordLogin">
-                                <i class="fa-solid fa-eye" id="iconToggleLogin"></i>
-                            </button>
-                        </div>
-                        <button type="submit" name="submit" class="btn btn-entrar">Entrar</button>
-                    </form>
-                    <p>Ainda não tem conta? <a id="btnCadastro" href="#"><u>Cadastre-se</u></a></p>
-                </div>
+</head>
+<body>
+    <div class="container">
+        <div class="contentLogin">
+            <div class="villa">
+                <img src="../img/villa.png" alt="Foto Villasanti, jogador do Grêmio">
             </div>
 
+            <div class="login">
+                <h2 class="title">Login</h2>
+                <form action="login.php" method="post" class="fLogin">
+                    <input type="hidden" name="acao" value="login">
+                    <label for="flUsuario">Usuário:</label>
+                    <input type="text" name="usuario" placeholder="Digite seu Usuário" required>
+                    <label for="flSenha">Senha:</label>
+                    <div style="position: relative;">
+                        <input type="password" id="passwordLogin" name="senha" placeholder="Digite sua Senha" required>
+                        <button type="button" id="togglePasswordLogin">
+                            <i class="fa-solid fa-eye" id="iconToggleLogin"></i>
+                        </button>
+                    </div>
+                    <button type="submit" name="submit" class="btn btn-entrar">Entrar</button>
+                </form>
+                <p>Ainda não tem conta? <a id="btnCadastro" href="#"><u>Cadastre-se</u></a></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
             <div class="contentCadastro">
 
                 <div class="alanpa">
@@ -162,7 +167,8 @@ if (isset($_POST['acao'])) {
             </div>
         </div>
     </div>
-<script src="login.js"></script>
+
+<script src="login.js?t=<?php echo date("YmdHis").rand(1,9999);?>"></script>
 <?php
 include_once '../footer/footer.php'; 
 ?>

@@ -1,5 +1,6 @@
 <?php
 include_once '../configuracao.php';
+$pagina = 'time';
 include_once '../header/header.php'; 
 include_once '../database/conexao.php';
 

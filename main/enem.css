@@ -160,3 +160,6 @@ a.barra {
 .scroll-container::-webkit-scrollbar-button {
     display: none;
 }
+#index footer{
+    margin-top: 60%!important;
+}

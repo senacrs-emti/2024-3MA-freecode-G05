@@ -2,6 +2,7 @@
 include_once '../configuracao.php';
 include_once '../database/conexao.php';
 include_once '../login/validacao.php';
+$pagina = 'partida';
 include_once '../header/header.php';
 
 // Capture o ID da partida pela URL
@@ -34,7 +35,6 @@ if (!$partida) {
 }
 
 ?>
-
 <div class="container-partida">
         <img src="<?php echo $varPathLocal;?>img/GRENAL.jpg" alt="Imagem desfocada" class="background">
         <div class="content-partida">
