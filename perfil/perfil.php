@@ -1,4 +1,4 @@
-<?php
+ <?php
 include_once '../configuracao.php';
 include_once '../header/header.php'; 
 include_once '../database/conexao.php';
@@ -21,11 +21,11 @@ $sql_user = "SELECT
               l.user AS nome_usuario, p.descricao AS descricao_perfil
             FROM login l
             INNER JOIN perfil p
-            ON l.idlogin = p.iduser
+            ON l.idlogin = p.id user
             WHERE l.idlogin = ?;";
 
 $stmt_user = $conn->prepare($sql_user);
-if ($stmt_user) {
+if ($st mt_user) {
     $stmt_user->bind_param("i", $id_usuario);
     $stmt_user->execute();
     $result_user = $stmt_user->get_result();
@@ -58,6 +58,9 @@ $result_times = $conn->query($sql_times);
 if (!$result_times) {
   die("Erro ao obter times: " . $conn->error);
 }
+
+var_dump($id_usuario, $id_perfil);
+
 
 ?>
 
