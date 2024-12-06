@@ -1,7 +1,7 @@
-.body-perfil {
+#body-header .body-perfil {
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    background-color: #f5f5f5 !important;
     font-family: "Inria Sans", serif;
     font-style: normal;
   }

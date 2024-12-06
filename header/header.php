@@ -22,7 +22,7 @@ $time = date("YmdHis").rand(1,9999);
     <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
-<body>
+<body id="body-header">
 <input type="hidden" value="<?php echo $varPathLocal;?>" id="path">
 <?php
 if( !in_array($file,$negarPaginas) ){

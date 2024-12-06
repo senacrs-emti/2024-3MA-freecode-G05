@@ -1,8 +1,8 @@
-body {
+#body-index {
     font-family: "Inria Sans", serif;
     font-style: normal;
     color: white;
-    background-color: #000000;
+    background-color: black;
 }
 
 section {
@@ -13,7 +13,6 @@ section {
 .partidas_left,
 .partidas_right {
     border-radius: 8px;
-    height: 439px;
     margin: 2% 1%;
     display: flex;
     flex-direction: column;
