@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 03-Dez-2024 às 01:45
+-- Tempo de geração: 06-Dez-2024 às 02:05
 -- Versão do servidor: 10.4.25-MariaDB
 -- versão do PHP: 8.1.10
 
@@ -29,11 +29,18 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `avaliacao` (
   `idavaliacao` int(11) NOT NULL,
-  `nota` int(11) DEFAULT NULL,
   `comentario` longtext DEFAULT NULL,
   `idpartidas` int(11) NOT NULL DEFAULT 0,
-  `datacriacao` datetime DEFAULT current_timestamp()
+  `idlogin` int(11) NOT NULL,
+  `idperfil` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `avaliacao`
+--
+
+INSERT INTO `avaliacao` (`idavaliacao`, `comentario`, `idpartidas`, `idlogin`, `idperfil`) VALUES
+(1, NULL, 0, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -42,11 +49,10 @@ CREATE TABLE `avaliacao` (
 --
 
 CREATE TABLE `login` (
-  `idlogin` int(11) NOT NULL AUTO_INCREMENT, 
-  `user` varchar(45) NOT NULL,
+  `idlogin` int(11) NOT NULL,
+  `user` varchar(45) DEFAULT NULL,
   `senha` varchar(45) DEFAULT NULL,
-  `email` varchar(45) NOT NULL,
-  `foto` blob DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
   `nome` varchar(45) DEFAULT NULL,
   `avaliacao_idavaliacao` int(11) NOT NULL,
   `administrador` tinyint(4) DEFAULT NULL,
@@ -57,8 +63,8 @@ CREATE TABLE `login` (
 -- Extraindo dados da tabela `login`
 --
 
-INSERT INTO `login` (`idlogin`, `user`, `senha`, `email`, `foto`, `nome`, `avaliacao_idavaliacao`, `administrador`, `usuario`) VALUES
-(1, '_viniross', '112345', 'viniciusrossw@gmail.com', NULL, 'Vini', 3, NULL, NULL);
+INSERT INTO `login` (`idlogin`, `user`, `senha`, `email`, `nome`, `avaliacao_idavaliacao`, `administrador`, `usuario`) VALUES
+(1, '_viniross', '827ccb0eea8a706c4c34a16891f84e7b', 'viniciusrossws@gmail.com', 'Vinícius Ross', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -72,34 +78,57 @@ CREATE TABLE `partidas` (
   `hora` varchar(10) DEFAULT NULL,
   `estadio` varchar(100) DEFAULT NULL,
   `idtimeCasa` varchar(50) NOT NULL DEFAULT '',
-  `idtimeVis` varchar(50) NOT NULL DEFAULT ''
+  `idtimeVis` varchar(50) NOT NULL DEFAULT '',
+  `header` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `partidas`
 --
 
-INSERT INTO `partidas` (`idpartidas`, `data`, `hora`, `estadio`, `idtimeCasa`, `idtimeVis`) VALUES
-(1, '04/12/2024', NULL, 'Beira Rio', '2', '6'),
-(2, '04/12/2024', NULL, 'Mineirão', '10', '16'),
-(3, '04/12/2024', NULL, 'Barradão', '20', '1'),
-(4, '04/12/2024', NULL, 'Maracanã', '13', '11'),
-(5, '04/12/2024', NULL, 'São Januário', '19', '5'),
-(6, '04/12/2024', NULL, 'Neo Química Arena', '8', '12'),
-(7, '04/12/2024', NULL, 'Morumbis', '18', '15'),
-(8, '04/12/2024', NULL, 'Arena da Baixada', '7', '17'),
-(9, '04/12/2024', NULL, 'Antônio Accioly', '4', '14'),
-(10, '04/12/2024', NULL, 'Heriberto Hülse', '9', '3'),
-(11, '08/12/2024', NULL, 'Arena do Grêmio', '1', '8'),
-(12, '08/12/2024', NULL, 'Arena MRV', '5', '7'),
-(13, '08/12/2024', NULL, 'Arena Fonte Nova', '12', '4'),
-(14, '08/12/2024', NULL, 'Maracanã', '3', '20'),
-(15, '08/12/2024', NULL, 'Nilton Santos', '6', '18'),
-(16, '08/12/2024', NULL, 'Allianz Parque', '16', '13'),
-(17, '08/12/2024', NULL, 'Arena Red Bull', '17', '9'),
-(18, '08/12/2024', NULL, 'Arena Castelão', '14', '2'),
-(19, '08/12/2024', NULL, 'Arena Pantanal', '11', '19'),
-(20, '08/12/2024', NULL, 'Estádio Alfredo Jaconi', '15', '10');
+INSERT INTO `partidas` (`idpartidas`, `data`, `hora`, `estadio`, `idtimeCasa`, `idtimeVis`, `header`) VALUES
+(1, '', NULL, '', '', '', ''),
+(2, '', NULL, '', '', '', ''),
+(3, '', NULL, '', '', '', ''),
+(4, '', NULL, '', '', '', ''),
+(5, '', NULL, '', '', '', ''),
+(6, '', NULL, '', '', '', ''),
+(7, '', NULL, '', '', '', ''),
+(8, '', NULL, '', '', '', ''),
+(9, '', NULL, '', '', '', ''),
+(10, '', NULL, '', '', '', ''),
+(11, '08/12/2024', '16:00', 'Arena do Grêmio', '1', '8', 'grecor.jpg'),
+(12, '08/12/2024', '16:00', 'Arena MRV', '5', '7', 'camcap.jpg'),
+(13, '08/12/2024', '16:00', 'Arena Fonte Nova', '12', '4', 'bahacg.jpg'),
+(14, '08/12/2024', '16:00', 'Maracanã', '3', '20', 'flavit.jpg'),
+(15, '08/12/2024', '16:00', 'Nilton Santos', '6', '18', 'botsao.jpg'),
+(16, '08/12/2024', '16:00', 'Allianz Parque', '16', '13', 'palflu.jpg'),
+(17, '08/12/2024', '16:00', 'Arena Red Bull', '17', '9', 'bgccri.jpg'),
+(18, '08/12/2024', '16:00', 'Arena Castelão', '14', '2', 'fortint.jpg'),
+(19, '08/12/2024', '16:00', 'Arena Pantanal', '11', '19', 'cuivas.jpg'),
+(20, '08/12/2024', '16:00', 'Estádio Alfredo Jaconi', '15', '10', 'juvcru.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `perfil`
+--
+
+CREATE TABLE `perfil` (
+  `idperfil` int(11) NOT NULL,
+  `iduser` int(11) NOT NULL DEFAULT 0,
+  `idfoto` int(11) NOT NULL DEFAULT 0,
+  `descricao` longtext DEFAULT NULL,
+  `capa` varchar(255) DEFAULT NULL,
+  `idlogin` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `perfil`
+--
+
+INSERT INTO `perfil` (`idperfil`, `iduser`, `idfoto`, `descricao`, `capa`, `idlogin`) VALUES
+(1, 1, 0, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -121,26 +150,26 @@ CREATE TABLE `times` (
 --
 
 INSERT INTO `times` (`idtime`, `nome`, `escudo`, `sigla`, `estadio`, `mascote`) VALUES
-(1, 'Grêmio', 'gremio.jpg', 'GRE', 'gremio.jpg', 'gremio.jpg'),
-(2, 'Internacional', 'internacional.jpg', 'INT', 'internacional.jpg', 'internacional.jpg'),
-(3, 'Flamengo', 'flamengo.jpg', 'FLA', 'flamengo.jpg', 'flamengo.jpg'),
-(4, 'Atlético GO', 'atletico-go.jpg', 'ACG', 'atletico-go.jpg', 'atletico-go.jpg'),
-(5, 'Atlético MG', 'atletico-mg.jpg', 'CAM', 'atletico-mg.jpg', 'atletico-mg.jpg'),
-(6, 'Botafogo', 'botafogo.jpg', 'BOT', 'botafogo.jpg', 'botafogo.jpg'),
-(7, 'Athletico PR', 'athletico-pr.jpg', 'CAP', 'athletico-pr.jpg', 'athletico-pr.jpg'),
-(8, 'Corinthians', 'corinthians.jpg', 'COR', 'corinthians.jpg', 'corinthians.jpg'),
-(9, 'Criciúma', 'criciuma.jpg', 'CRI', 'criciuma.jpg', 'criciuma.jpg'),
-(10, 'Cruzeiro', 'cruzeiro.jpg', 'CRU', 'cruzeiro.jpg', 'cruzeiro.jpg'),
-(11, 'Cuiaba', 'cuiaba.jpg', 'CUI', 'cuiaba.jpg', 'cuiaba.jpg'),
-(12, 'Bahia', 'bahia.jpg', 'BAH', 'bahia.jpg', 'bahia.jpg'),
-(13, 'Fluminense', 'fluminense.jpg', 'FLU', 'fluminense.jpg', 'fluminense.jpg'),
-(14, 'Fortaleza', 'fortaleza.jpg', 'FOR', 'fortaleza.jpg', 'fortaleza.jpg'),
-(15, 'Juventude', 'juventude.jpg', 'JUV', 'juventude.jpg', 'juventude.jpg'),
-(16, 'Palmeiras', 'palmeiras.jpg', 'PAL', 'palmeiras.jpg', 'palmeiras.jpg'),
-(17, 'Bragantino', 'bragantino.jpg', 'RBG', 'bragantino.jpg', 'bragantino.jpg'),
-(18, 'São Paulo', 'saopaulo.jpg', 'SAO', 'saopaulo.jpg', 'saopaulo.jpg'),
-(19, 'Vasco', 'vasco.jpg', 'VAS', 'vasco.jpg', 'vasco.jpg'),
-(20, 'Vitória', 'vitoria.jpg', 'VIT', 'vitoria.jpg', 'vitoria.jpg');
+(1, 'Grêmio', 'gremio.png', 'GRE', 'gremio.png', 'gremio.png'),
+(2, 'Internacional', 'internacional.png', 'INT', 'internacional.png', 'internacional.png'),
+(3, 'Flamengo', 'flamengo.png', 'FLA', 'flamengo.png', 'flamengo.png'),
+(4, 'Atlético GO', 'atleticogo.png', 'ACG', 'atleticogo.png', 'atleticogo.png'),
+(5, 'Atlético MG', 'atleticomg.png', 'CAM', 'atleticomg.png', 'atleticomg.png'),
+(6, 'Botafogo', 'botafogo.png', 'BOT', 'botafogo.png', 'botafogo.png'),
+(7, 'Athletico PR', 'athleticopr.png', 'CAP', 'athleticopr.png', 'athleticopr.png'),
+(8, 'Corinthians', 'corinthians.png', 'COR', 'corinthians.png', 'corinthians.png'),
+(9, 'Criciúma', 'criciuma.png', 'CRI', 'criciuma.png', 'criciuma.png'),
+(10, 'Cruzeiro', 'cruzeiro.png', 'CRU', 'cruzeiro.png', 'cruzeiro.png'),
+(11, 'Cuiaba', 'cuiaba.png', 'CUI', 'cuiaba.png', 'cuiaba.png'),
+(12, 'Bahia', 'bahia.png', 'BAH', 'bahia.png', 'bahia.png'),
+(13, 'Fluminense', 'fluminense.png', 'FLU', 'fluminense.png', 'fluminense.png'),
+(14, 'Fortaleza', 'fortaleza.png', 'FOR', 'fortaleza.png', 'fortaleza.png'),
+(15, 'Juventude', 'juventude.png', 'JUV', 'juventude.png', 'juventude.png'),
+(16, 'Palmeiras', 'palmeiras.png', 'PAL', 'palmeiras.png', 'palmeiras.png'),
+(17, 'Bragantino', 'bragantino.png', 'RBG', 'bragantino.png', 'bragantino.png'),
+(18, 'São Paulo', 'saopaulo.png', 'SAO', 'saopaulo.png', 'saopaulo.png'),
+(19, 'Vasco', 'vasco.png', 'VAS', 'vasco.png', 'vasco.png'),
+(20, 'Vitória', 'vitoria.png', 'VIT', 'vitoria.png', 'vitoria.png');
 
 --
 -- Índices para tabelas despejadas
@@ -157,14 +186,20 @@ ALTER TABLE `avaliacao`
 --
 ALTER TABLE `login`
   ADD PRIMARY KEY (`idlogin`),
-  ADD UNIQUE KEY `user` (`user`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD KEY `fk_login_avaliacao1_idx` (`avaliacao_idavaliacao`);
 
 --
 -- Índices para tabela `partidas`
 --
 ALTER TABLE `partidas`
   ADD PRIMARY KEY (`idpartidas`);
+
+--
+-- Índices para tabela `perfil`
+--
+ALTER TABLE `perfil`
+  ADD PRIMARY KEY (`idperfil`),
+  ADD KEY `fk_idlogin` (`idlogin`);
 
 --
 -- Índices para tabela `times`
@@ -180,13 +215,13 @@ ALTER TABLE `times`
 -- AUTO_INCREMENT de tabela `avaliacao`
 --
 ALTER TABLE `avaliacao`
-  MODIFY `idavaliacao` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idavaliacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `login`
 --
 ALTER TABLE `login`
-  MODIFY `idlogin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idlogin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `partidas`
@@ -195,10 +230,32 @@ ALTER TABLE `partidas`
   MODIFY `idpartidas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
+-- AUTO_INCREMENT de tabela `perfil`
+--
+ALTER TABLE `perfil`
+  MODIFY `idperfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de tabela `times`
 --
 ALTER TABLE `times`
   MODIFY `idtime` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- Restrições para despejos de tabelas
+--
+
+--
+-- Limitadores para a tabela `login`
+--
+ALTER TABLE `login`
+  ADD CONSTRAINT `fk_login_avaliacao1` FOREIGN KEY (`avaliacao_idavaliacao`) REFERENCES `avaliacao` (`idavaliacao`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Limitadores para a tabela `perfil`
+--
+ALTER TABLE `perfil`
+  ADD CONSTRAINT `fk_idlogin` FOREIGN KEY (`idlogin`) REFERENCES `login` (`idlogin`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
