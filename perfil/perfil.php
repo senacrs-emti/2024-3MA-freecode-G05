@@ -128,7 +128,6 @@ var_dump($result_comentarios);
       <div class="post-content">
         <h2><?php echo htmlspecialchars($usuario['nome']); ?></h2>
         <p><?php echo htmlspecialchars($comentario['comentario']); ?></p>
-        <small><?php echo date("d/m/Y H:i", strtotime($comentario['datacriacao'])); ?></small>
       </div>
     </div>
     <?php endwhile; ?>

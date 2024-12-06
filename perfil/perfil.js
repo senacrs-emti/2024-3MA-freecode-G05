@@ -1,38 +1,57 @@
 function mostrarInputComentario() {
-    const container = document.getElementById("comentariosContainer");
+    const comentariosContainer = document.getElementById('comentariosContainer');
 
-    // Criar elementos
-    const input = document.createElement("textarea");
-    input.placeholder = "Digite seu comentário...";
-    input.classList.add("textarea-comentario");
+    // Cria um novo elemento de comentário
+    const novoComentario = document.createElement('div');
+    novoComentario.classList.add('comentario');
 
-    const button = document.createElement("button");
-    button.textContent = "Enviar";
-    button.classList.add("botao-enviar");
+    // Foto do perfil
+    const fotoPerfil = document.createElement('div');
+    fotoPerfil.classList.add('foto-perfil');
+    const img = document.createElement('img');
+    img.src = '../img/foto-perfil.png'; // Caminho da sua imagem
+    img.alt = 'Foto de Perfil';
+    fotoPerfil.appendChild(img);
 
-    // Evento de clique no botão
-    button.onclick = () => {
-        const conteudo = input.value;
-        fetch("adicionar_comentario.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: `id_usuario=1&conteudo=${encodeURIComponent(conteudo)}` // Substituir por ID dinâmico
-        }).then(response => {
-            if (response.ok) {
-                location.reload();
-            }
-        });
-    };
+    // Conteúdo do comentário
+    const conteudoComentario = document.createElement('div');
+    conteudoComentario.classList.add('conteudo-comentario');
 
-    // Adicionar ao container
-    container.appendChild(input);
-    container.appendChild(button);
+    // Nome do usuário
+    const idPerfil = document.createElement('div');
+    idPerfil.classList.add('id-perfil');
+    idPerfil.textContent = '_viniross';
+
+    // Campo de texto do comentário
+    const textarea = document.createElement('textarea');
+    textarea.classList.add('textarea-comentario');
+    textarea.placeholder = 'Escreva seu comentário...';
+
+    // Botão Salvar
+    const botaoSalvar = document.createElement('button');
+    botaoSalvar.textContent = 'Salvar';
+    botaoSalvar.classList.add('botao-salvar');
+
+    botaoSalvar.addEventListener('click', function () {
+        salvarComentario(conteudoComentario, textarea.value);
+    });
+
+    // Adiciona os elementos ao conteúdo do comentário
+    conteudoComentario.appendChild(idPerfil);
+    conteudoComentario.appendChild(textarea);
+    conteudoComentario.appendChild(botaoSalvar);
+
+    // Adiciona o conteúdo ao novo comentário
+    novoComentario.appendChild(fotoPerfil);
+    novoComentario.appendChild(conteudoComentario);
+
+    // Adiciona o novo comentário ao container
+    comentariosContainer.appendChild(novoComentario);
 }
 
 function salvarComentario(conteudoComentario, texto) {
     const textarea = conteudoComentario.querySelector('.textarea-comentario');
     const botaoSalvar = conteudoComentario.querySelector('button');
-    
     conteudoComentario.removeChild(textarea);
     conteudoComentario.removeChild(botaoSalvar);
 
@@ -45,39 +64,33 @@ function salvarComentario(conteudoComentario, texto) {
 
 function abrirModal() {
     const modal = document.getElementById('editModal');
-    modal.style.display = 'flex'; // Exibir o modal
+    modal.style.display = 'flex'; // Torna o modal visível
 }
 
+// Fecha o modal ao clicar no botão ou fora do conteúdo
 function fecharModal() {
     const modal = document.getElementById('editModal');
-    modal.style.display = 'none'; // Ocultar o modal
+    modal.style.display = 'none';
 }
 
+// Salva as alterações do perfil
 function salvarEdicao() {
-    const nomeUsuario = document.getElementById("username").value;
-    const descricao = document.getElementById("descriptionPerfil").value; // Alterado para o ID correto
-    const time = document.querySelector("select[name='time']").value;
+    const username = document.getElementById('username').value;
+    const description = document.getElementById('description').value;
 
-    const formData = new FormData();
-    formData.append("id_usuario", 1); // Substituir pelo ID correto
-    formData.append("nome_usuario", nomeUsuario);
-    formData.append("descricao", descricao);
-    formData.append("time_preferido", time);
+    // Atualiza as informações no perfil
+    document.querySelector('.profile-info h1').textContent = username;
+    document.querySelector('.profile-info p').textContent = description;
 
-    fetch("salvar_perfil.php", {
-        method: "POST",
-        body: formData
-    }).then(response => {
-        if (response.ok) {
-            location.reload();
-        }
-    });
+    fecharModal(); // Fecha o modal
 }
 
+// Fecha o modal ao clicar fora do conteúdo
 window.addEventListener('click', function (event) {
     const modal = document.getElementById('editModal');
+    const modalContent = modal.querySelector('.modal-content');
 
-    // Fechar o modal ao clicar fora do conteúdo
+    // Se o clique não foi no conteúdo do modal e o modal está aberto
     if (event.target === modal) {
         fecharModal();
     }
