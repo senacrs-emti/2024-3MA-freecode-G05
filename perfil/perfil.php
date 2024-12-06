@@ -1,8 +1,11 @@
- <?php
+<?php
 include_once '../configuracao.php';
 include_once '../header/header.php'; 
 include_once '../database/conexao.php';
 include_once '../login/validacao.php';
+
+$id_usuario = $_SESSION['idlogin']; 
+$id_perfil = $_GET['idperfil'] ?? null; 
 
 // Obter comentários do usuário
 $sql_comentarios = "SELECT
@@ -21,11 +24,11 @@ $sql_user = "SELECT
               l.user AS nome_usuario, p.descricao AS descricao_perfil
             FROM login l
             INNER JOIN perfil p
-            ON l.idlogin = p.id user
+            ON l.idlogin = p.idlogin
             WHERE l.idlogin = ?;";
 
 $stmt_user = $conn->prepare($sql_user);
-if ($st mt_user) {
+if ($stmt_user) {
     $stmt_user->bind_param("i", $id_usuario);
     $stmt_user->execute();
     $result_user = $stmt_user->get_result();
@@ -74,8 +77,8 @@ var_dump($id_usuario, $id_perfil);
   </div>
 
   <div class="profile-info">
-    <h1><?php echo htmlspecialchars($usuario['user']); ?></h1>
-    <p><?php echo htmlspecialchars($usuario['descricao']); ?></p>
+    <h1><?php echo htmlspecialchars($id_usuario['user']); ?></h1>
+    <p><?php echo htmlspecialchars($id_usuario['descricao']); ?></p>
   </div>
 
   <button class="edit-button" onclick="abrirModal()">Editar Perfil</button>
