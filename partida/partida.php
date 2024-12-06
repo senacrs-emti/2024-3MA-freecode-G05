@@ -1,18 +1,17 @@
-<?php
+<?php 
 include_once '../configuracao.php';
 include_once '../database/conexao.php';
 include_once '../login/validacao.php';
 include_once '../header/header.php';
- 
+
 // Capture o ID da partida pela URL
 $idPartida = isset($_GET['p']) ? intval($_GET['p']) : 0;
- 
+
 // Evite SQL Injection e busque os dados da partida
 $sql = "SELECT
         p.idpartidas,
         p.data,
         p.estadio,
-        p.header,
         p.idtimeCasa,
         p.idtimeVis,
         tc.nome AS NomeTimeCasa,
@@ -25,19 +24,19 @@ $sql = "SELECT
     INNER JOIN times AS tc ON p.idtimeCasa = tc.idtime
     INNER JOIN times AS tv ON p.idtimeVis = tv.idtime
     WHERE p.idpartidas = $idPartida;";
- 
+
 $result = mysqli_query($conn, $sql);
 $partida = mysqli_fetch_assoc($result);
- 
+
 // Verifique se a partida foi encontrada
 if (!$partida) {
     die("Partida não encontrada!");
 }
- 
+
 ?>
- 
+
 <div class="container-partida">
-        <img src="<?php echo $varPathLocal;?>img/partidas/<?php echo $partida['header'];?>" alt="Imagem desfocada" class="background">
+        <img src="<?php echo $varPathLocal;?>img/GRENAL.jpg" alt="Imagem desfocada" class="background">
         <div class="content-partida">
             <div class="placar">
                 <div class="time">
@@ -113,5 +112,5 @@ if (!$partida) {
     </div>
     <script src="partida.js"></script>
 <?php
-include_once '../footer/footer.php';
+include_once '../footer/footer.php'; 
 ?>
