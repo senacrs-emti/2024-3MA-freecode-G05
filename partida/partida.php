@@ -12,6 +12,7 @@ $sql = "SELECT
         p.idpartidas,
         p.data,
         p.estadio,
+        p.header,
         p.idtimeCasa,
         p.idtimeVis,
         tc.nome AS NomeTimeCasa,
@@ -36,7 +37,7 @@ if (!$partida) {
 ?>
 
 <div class="container-partida">
-        <img src="<?php echo $varPathLocal;?>img/GRENAL.jpg" alt="Imagem desfocada" class="background">
+        <img src="<?php echo $varPathLocal;?>img/partidas/<?php echo $partida['header'];?>" alt="Imagem desfocada" class="background">
         <div class="content-partida">
             <div class="placar">
                 <div class="time">

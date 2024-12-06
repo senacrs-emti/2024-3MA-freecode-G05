@@ -102,7 +102,7 @@ INSERT INTO `partidas` (`idpartidas`, `data`, `hora`, `estadio`, `idtimeCasa`, `
 (13, '08/12/2024', '16:00', 'Arena Fonte Nova', '12', '4', 'bahacg.jpg'),
 (14, '08/12/2024', '16:00', 'Maracanã', '3', '20', 'flavit.jpg'),
 (15, '08/12/2024', '16:00', 'Nilton Santos', '6', '18', 'botsao.jpg'),
-(16, '08/12/2024', '16:00', 'Allianz Parque', '16', '13', 'palflu.jpg'),
+(16, '08/12/2024', '16:00', 'Allianz Parque', '16', '13', 'palflu.jpeg'),
 (17, '08/12/2024', '16:00', 'Arena Red Bull', '17', '9', 'bgccri.jpg'),
 (18, '08/12/2024', '16:00', 'Arena Castelão', '14', '2', 'fortint.jpg'),
 (19, '08/12/2024', '16:00', 'Arena Pantanal', '11', '19', 'cuivas.jpg'),
