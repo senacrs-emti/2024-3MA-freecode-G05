@@ -6,7 +6,7 @@
  
 .container-partida {
     position: relative;
-    width: 1404px; 
+    width: 1519px; 
     height: 200px; 
     overflow: hidden;
 }
@@ -72,6 +72,7 @@
     margin-bottom: 5%;
     position: relative;
     color: #000;
+    display: none;
 }
  
 .recFimDeJogo, .recIntervalo {
@@ -122,6 +123,7 @@
     align-items: flex-start;
     gap: 100px;
     background-color: #FFFF;
+    height: 600px;
 }
  
 

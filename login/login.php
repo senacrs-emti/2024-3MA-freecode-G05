@@ -163,6 +163,3 @@ if (isset($_POST['acao'])) {
         </div>
     </div>
 <script src="login.js"></script>
-<?php
-include_once '../footer/footer.php'; 
-?>
